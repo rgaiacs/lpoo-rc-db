@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <fstream>
 #include "interface.h"
 #include <sstream>
@@ -41,6 +42,7 @@ namespace lpoo {
     bool done = false;
     int option = -1;
 
+    system("clear");
     while (!done) {
       PrintMenu();
       cin >> option;
@@ -60,9 +62,14 @@ namespace lpoo {
   }
 
   void Interface::PrintMenu() const {
-    cout << "1 - Listar membros" << endl;
-    cout << "9 - Sair" << endl;
-    cout << endl << "> ";
+    cout  
+          << c_menu_color << "                          " << endl
+          << c_menu_color << "  " << c_menu_text_color 
+            << " 1 - Listar membros   " << c_menu_color << "  " << endl
+          << c_menu_color << "  " << c_menu_text_color 
+            << " 9 - Sair             " << c_menu_color << "  " << endl
+          << c_menu_color << "                          " << endl
+          << c_no_color+c_red_fg << "> " << c_no_color;
   }
 
   void Interface::ListMembers() const {
@@ -71,11 +78,12 @@ namespace lpoo {
     iter_end = members.end();
 
     while (iter != iter_end) {
-      cout << "---" << endl;
+      cout << c_green_fg << endl;
       iter->Print();
+      cout << endl;
       iter++;
     }
-    cout << "---" << endl;
+    cout << c_no_color << endl << endl;
   }
 
 };

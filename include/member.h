@@ -10,10 +10,11 @@ namespace lpoo {
     public:
       Member(std::string  r, std::string n, std::string e, int xp) : ra(r),
           name(n), email(e), exp(xp) {
-//        level = GetLevel(exp);
-//        title = GetTitle(title);
-        level = 0;
-        title = "Exemplo";
+        for (level = 0; level < 8; level++) {
+          if (c_levels[level] > exp)
+            break;
+        }
+        title = c_titles[level-1];
       };
       ~Member() {};
 
@@ -21,6 +22,7 @@ namespace lpoo {
     private:
       std::string ra, name, email, title;
       int exp, level;
+
   };
 
 };
