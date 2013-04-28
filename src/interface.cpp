@@ -22,17 +22,14 @@ namespace lpoo {
 
     string line;
     while (getline(file, line, c_separator)) {
-      int ra;
-      string name, email;
+      string ra = line, name, email;
       int exp;
 
       stringstream aux;
-      aux << line;
-      aux >> ra;
 
       getline(file, name, c_separator);
       getline(file, email, c_separator);
-      getline(file, line, c_separator);
+      getline(file, line);
       aux << line; aux >> exp;
 
       Member member(ra,name,email,exp);
@@ -48,7 +45,7 @@ namespace lpoo {
       PrintMenu();
       cin >> option;
       switch (option) {
-        case 0:
+        case 1:
           ListMembers();
           break;
         case 9:
@@ -65,7 +62,7 @@ namespace lpoo {
   void Interface::PrintMenu() const {
     cout << "1 - Listar membros" << endl;
     cout << "9 - Sair" << endl;
-    cout << endl << "> " << endl;
+    cout << endl << "> ";
   }
 
   void Interface::ListMembers() const {
@@ -74,9 +71,11 @@ namespace lpoo {
     iter_end = members.end();
 
     while (iter != iter_end) {
+      cout << "---" << endl;
       iter->Print();
       iter++;
     }
+    cout << "---" << endl;
   }
 
 };

@@ -10,7 +10,7 @@ namespace lpoo {
          << title << endl
          << email << endl
          << "Level: " << level
-           << "Exp: " << exp << endl;
+           << "  Exp: " << exp << endl;
   }
 
 };

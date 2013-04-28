@@ -2,11 +2,13 @@ default: all
 
 include make.inc
 
-all: library
-
+all: library bin
 
 library:
 	(cd lib; make)
+
+bin:
+	(cd lib; make bin)
 
 clean:
 	(cd lib; make clean)
