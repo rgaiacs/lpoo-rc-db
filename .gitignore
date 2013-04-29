@@ -2,3 +2,7 @@
 *.swp
 *.[oa]
 lpoo-rc-db
+*.aux
+*.fdb_latexmk
+*.fls
+*.log

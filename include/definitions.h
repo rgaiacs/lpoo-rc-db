@@ -32,6 +32,8 @@ namespace lpoo {
   const std::string c_titles[8] = { "Alquimista Iniciante", 
       "Alquimista Médio", "Alquimista Avançado", "Alquimista Especialista",
       "Mago Iniciante", "Mago Médio", "Mago Avançado", "Mago Especialista"};
+
+  const int c_exp_per_difficulty[4] = {5, 15, 40, 90};
 };
 
 #endif
