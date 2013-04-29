@@ -2,8 +2,8 @@
 
 ## Instalação
 
-$ make
+    $ make
 
 ## Execução
 
-$ ./lpoo-rc-db
+    $ ./lpoo-rc-db
