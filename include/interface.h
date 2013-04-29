@@ -20,7 +20,9 @@ namespace lpoo {
 
       void StartInterface();
       void PrintMenu() const;
+
       void ListMembers() const;
+      void AddMember();
   };
 
 };

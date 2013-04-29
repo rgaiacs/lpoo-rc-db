@@ -50,6 +50,9 @@ namespace lpoo {
         case 1:
           ListMembers();
           break;
+        case 2:
+          AddMember();
+          break;
         case 9:
           done = true;
           break;
@@ -66,6 +69,8 @@ namespace lpoo {
           << c_menu_color << "                          " << endl
           << c_menu_color << "  " << c_menu_text_color 
             << " 1 - Listar membros   " << c_menu_color << "  " << endl
+          << c_menu_color << "  " << c_menu_text_color 
+            << " 2 - Adicionar membro " << c_menu_color << "  " << endl
           << c_menu_color << "  " << c_menu_text_color 
             << " 9 - Sair             " << c_menu_color << "  " << endl
           << c_menu_color << "                          " << endl
@@ -84,6 +89,23 @@ namespace lpoo {
       iter++;
     }
     cout << c_no_color << endl << endl;
+  }
+
+  void Interface::AddMember() {
+    char ra[256], name[256], email[256];
+    cout << c_blue_fg + "RA: " + c_no_color;
+    cin >> ra;
+    cin.ignore();
+    cout << c_blue_fg + "Nome: " + c_no_color;
+    cin.getline(name,128,'\n');
+    cout << c_blue_fg + "E-mail: " + c_no_color;
+    cin >> email;
+    Member member(ra,name,email,0);
+    members.push_back(member);
+
+    std::ofstream file("database/members.db",std::ofstream::app);
+    file << ra << c_separator << name << c_separator <<
+      email << c_separator << 0 << endl;
   }
 
 };
