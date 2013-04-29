@@ -15,7 +15,37 @@ namespace lpoo {
   }
 
   void Interface::ReadDatabase() {
+    ReadSubjects();
+    ReadAchievements();
     ReadMembers();
+  }
+
+  void Interface::ReadSubjects() {
+    ifstream file("database/subjects.db");
+
+    string id, name;
+    while (getline(file, id, c_separator)) {
+      getline(file, name);
+
+      Subject subject(id, name);
+      subjects.push_back(subject);
+    }
+  }
+
+  void Interface::ReadAchievements() {
+    ifstream file("database/achievements.db");
+
+    string id, description, line;
+    int difficulty;
+    stringstream aux;
+    while (getline(file, id, c_separator)) {
+      getline(file, description, c_separator);
+      getline(file, line);
+
+      aux << line; aux >> difficulty;
+      Achievement achievement(id, description, difficulty);
+      achievements.push_back(achievement);
+    }
   }
 
   void Interface::ReadMembers() {
@@ -47,18 +77,12 @@ namespace lpoo {
       PrintMenu();
       cin >> option;
       switch (option) {
-        case 1:
-          ListMembers();
-          break;
-        case 2:
-          AddMember();
-          break;
-        case 9:
-          done = true;
-          break;
-        default:
-          cout << "Invalid option" << endl;
-          break;
+        case 1: ListMembers(); break;
+        case 2: AddMember(); break;
+        case 3: ListSubjects(); break;
+        case 4: ListAchievements(); break;
+        case 9: done = true; break;
+        default: cout << "Invalid option" << endl; break;
       }
 
     }
@@ -66,14 +90,24 @@ namespace lpoo {
 
   void Interface::PrintMenu() const {
     cout  
-          << c_menu_color << "                          " << endl
+          << c_menu_color 
+            << "                                " << endl
           << c_menu_color << "  " << c_menu_text_color 
-            << " 1 - Listar membros   " << c_menu_color << "  " << endl
+                    << "                            " << c_menu_color << "  " << endl
           << c_menu_color << "  " << c_menu_text_color 
-            << " 2 - Adicionar membro " << c_menu_color << "  " << endl
+                    << "   1 - Listar membros       " << c_menu_color << "  " << endl
           << c_menu_color << "  " << c_menu_text_color 
-            << " 9 - Sair             " << c_menu_color << "  " << endl
-          << c_menu_color << "                          " << endl
+                    << "   2 - Adicionar membro     " << c_menu_color << "  " << endl
+          << c_menu_color << "  " << c_menu_text_color 
+                    << "   3 - Listar assuntos      " << c_menu_color << "  " << endl
+          << c_menu_color << "  " << c_menu_text_color 
+                    << "   4 - Listar realizações   " << c_menu_color << "  " << endl
+          << c_menu_color << "  " << c_menu_text_color 
+                    << "   9 - Sair                 " << c_menu_color << "  " << endl
+          << c_menu_color << "  " << c_menu_text_color 
+                    << "                            " << c_menu_color << "  " << endl
+          << c_menu_color 
+            << "                                " << endl
           << c_no_color+c_red_fg << "> " << c_no_color;
   }
 
@@ -89,6 +123,33 @@ namespace lpoo {
       iter++;
     }
     cout << c_no_color << endl << endl;
+  }
+
+  void Interface::ListSubjects() const {
+    list<Subject>::const_iterator iter, iter_end;
+    iter = subjects.begin();
+    iter_end = subjects.end();
+
+    while (iter != iter_end) {
+      cout << c_blue_bg + ' ' + c_no_color + c_white_fg;
+      iter->Print();
+      iter++;
+    }
+    cout << c_no_color << endl;
+  }
+
+  void Interface::ListAchievements() const {
+    list<Achievement>::const_iterator iter, iter_end;
+    iter = achievements.begin();
+    iter_end = achievements.end();
+
+    while (iter != iter_end) {
+      cout << c_blue_fg;
+      iter->Print();
+      cout << endl;
+      iter++;
+    }
+    cout << c_no_color << endl;
   }
 
   void Interface::AddMember() {
