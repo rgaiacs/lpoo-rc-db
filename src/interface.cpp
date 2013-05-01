@@ -102,6 +102,7 @@ namespace lpoo {
         case 10: AddMember(); break;
         case 11: AddSubject(); break;
         case 12: AddAchievement(); break;
+        case 20: AddMemberAchievement(); break;
         case  0: done = true; break;
         default: cout << "Invalid option" << endl; break;
       }
@@ -110,25 +111,26 @@ namespace lpoo {
   }
 
   void Interface::PrintMenu() const {
-    cout  << c_menu_color << setw(40) << " " << endl;
+    cout  << c_menu_color << setw(50) << " " << endl;
     cout << c_menu_color << "  " << c_menu_text_color 
-      << setw(36) << " " << c_menu_color << "  " << endl;
+      << setw(46) << " " << c_menu_color << "  " << endl;
     PrintMenuItem( 1, "Listar membros");
     PrintMenuItem( 2, "Listar assuntos");
     PrintMenuItem( 3, "Listar realizacoes");
     PrintMenuItem(10, "Adicionar membro");
     PrintMenuItem(11, "Adicionar assunto");
     PrintMenuItem(12, "Adicionar realizacao");
+    PrintMenuItem(20, "Adicionar realizacao para membro");
     PrintMenuItem( 0, "Sair");
     cout << c_menu_color << "  " << c_menu_text_color 
-      << setw(36) << " " << c_menu_color << "  " << endl;
-    cout  << c_menu_color << setw(40) << " " << endl;
+      << setw(46) << " " << c_menu_color << "  " << endl;
+    cout  << c_menu_color << setw(50) << " " << endl;
     cout << c_no_color + c_red_fg << "> " << c_no_color;
   }
 
   void Interface::PrintMenuItem(int i, string title) const {
     cout << c_menu_color << "  " << c_menu_text_color << setw(5) << right << i 
-      << " - " << setw(28) << left << title << c_menu_color << setw(2) << "  " << endl;
+      << " - " << setw(38) << left << title << c_menu_color << setw(2) << "  " << endl;
   }
 
   void Interface::ListMembers() const {
@@ -260,6 +262,76 @@ namespace lpoo {
     ofstream file("database/achievements.db", std::ofstream::app);
     file << id << c_separator << description << c_separator << difficulty << endl;
     WriteSubjects();
+  }
+
+  list<Member>::iterator Interface::GetMemberIterFromRa(string ra) {
+    list<Member>::iterator iter = members.begin(), iter_end = members.end();
+    while (iter != iter_end) {
+      if (ra == iter->GetRa())
+        return iter;
+      iter++;
+    }
+    return iter;
+  }
+
+  list<Member>::const_iterator Interface::GetMemberConstIterFromRa(string ra) const {
+    list<Member>::const_iterator iter = members.begin(), iter_end = members.end();
+    while (iter != iter_end) {
+      if (ra == iter->GetRa())
+        return iter;
+      iter++;
+    }
+    return iter;
+  }
+
+  list<Achievement>::iterator Interface::GetAchievementIterFromId(string id) {
+    list<Achievement>::iterator iter, iter_end;
+    iter = achievements.begin();
+    iter_end = achievements.end();
+    while (iter != iter_end) {
+      if (id == iter->id)
+        return iter;
+      iter++;
+    }
+    return iter;
+  }
+
+  list<Achievement>::const_iterator Interface::GetAchievementConstIterFromId(string id) const {
+    list<Achievement>::const_iterator iter, iter_end;
+    iter = achievements.begin();
+    iter_end = achievements.end();
+    while (iter != iter_end) {
+      if (id == iter->id)
+        return iter;
+      iter++;
+    }
+    return iter;
+  }
+
+  void Interface::AddMemberAchievement() {
+    string ra, id;
+    cout << "RA do membro: ";
+    cin >> ra;
+    list<Member>::iterator member = GetMemberIterFromRa(ra);
+    cout << "ID da realização: ";
+    cin >> id;
+    list<Achievement>::const_iterator achievement = GetAchievementConstIterFromId(id);
+    cout << "Confirma inclusão da realização" << endl;
+    cout << c_green_fg << achievement->description << c_no_color << endl;
+    cout << "para o membro" << endl;
+    cout << c_green_fg << member->GetName() << c_no_color << "?" << endl;
+    cout << "(S/N) ";
+    char SN;
+    cin >> SN;
+    while (SN != 's' && SN != 'S' && SN != 'n' && SN != 'N') {
+      cout << "Responda S ou N, por favor: ";
+      cin >> SN;
+    }
+    if (SN == 'n' || SN == 'N') {
+      cout << c_red_fg + "Abortando" + c_no_color << endl;
+      return;
+    }
+    member->AddAchievement(achievement);
   }
 
 };

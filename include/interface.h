@@ -36,6 +36,12 @@ namespace lpoo {
       void AddMember();
       void AddSubject();
       void AddAchievement();
+      void AddMemberAchievement();
+
+      std::list<Member>::iterator GetMemberIterFromRa(std::string);
+      std::list<Member>::const_iterator GetMemberConstIterFromRa(std::string) const;
+      std::list<Achievement>::iterator GetAchievementIterFromId(std::string);
+      std::list<Achievement>::const_iterator GetAchievementConstIterFromId(std::string) const;
   };
 
 };

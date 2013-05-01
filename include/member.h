@@ -15,6 +15,9 @@ namespace lpoo {
       ~Member() {};
 
       void Print() const;
+      std::string GetRa() const { return ra; }
+      std::string GetName() const { return name; }
+      void AddAchievement(std::list<Achievement>::const_iterator);
     private:
       std::string ra, name, email, title;
       int exp, level;

@@ -50,4 +50,18 @@ namespace lpoo {
     }
   }
 
+  void Member::AddAchievement(list<Achievement>::const_iterator achievement) {
+    string id = achievement->id;
+    achievements.push_back(id);
+    exp += c_exp_per_difficulty[achievement->difficulty-1];
+    if (exp >= c_levels[level]) {
+      level++;
+      title = c_titles[level-1];
+    }
+    string filename = "database/member_" + ra+ ".db";
+    ofstream file(filename.c_str(), ofstream::app);
+
+    file << id << endl;
+  }
+
 };
