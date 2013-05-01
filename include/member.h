@@ -2,26 +2,23 @@
 #define __member_h
 
 #include <string>
+#include <list>
 #include "definitions.h"
+#include "achievement.h"
 
 namespace lpoo {
   
   class Member {
     public:
-      Member(std::string  r, std::string n, std::string e, int xp) : ra(r),
-          name(n), email(e), exp(xp) {
-        for (level = 0; level < 8; level++) {
-          if (c_levels[level] > exp)
-            break;
-        }
-        title = c_titles[level-1];
-      };
+      Member(std::string, std::string, std::string, 
+          const std::list<Achievement> &);
       ~Member() {};
 
       void Print() const;
     private:
       std::string ra, name, email, title;
       int exp, level;
+      std::list<std::string> achievements;
 
   };
 

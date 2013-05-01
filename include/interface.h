@@ -24,13 +24,18 @@ namespace lpoo {
       void ReadAchievements();
       void ReadMembers();
 
+      void WriteSubjects();
+
       void StartInterface();
       void PrintMenu() const;
+      void PrintMenuItem(int, std::string) const;
 
       void ListSubjects() const;
       void ListAchievements() const;
       void ListMembers() const;
       void AddMember();
+      void AddSubject();
+      void AddAchievement();
   };
 
 };

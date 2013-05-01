@@ -2,7 +2,7 @@ default: all
 
 include ../make.inc
 
-OBJ = interface.o member.o
+OBJ = interface.o achievement.o subject.o member.o
 BINOBJ = main.o
 BIN = ../lpoo-rc-db
 
