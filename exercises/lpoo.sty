@@ -1,3 +1,11 @@
-\newcommand{\easy}{{\bf \color{red} Fácil}}
-\newcommand{\medium}{{\bf \color{red} Médio}}
-\newcommand{\hard}{{\bf \color{red} Difícil}}
+\usepackage{tikz}
+\newcommand{\easy}{{\color{green} $\blacktriangle$}\hspace{-0.28cm}$\vartriangle$}
+\newcommand{\medium}{{\color{yellow} $\blacksquare$}\hspace{-0.3cm}$\square$}
+\newcommand{\hard}{{\color{red} $\blacklozenge$}\hspace{-0.25cm}$\Diamond$}
+\newcommand{\veryhard}{\hfill
+\begin{tikzpicture}
+  \draw[fill=red] (0,0) circle (0.15);
+\end{tikzpicture}}
+%\newcommand{\easy}{{\bf \color{red} Fácil}}
+%\newcommand{\medium}{{\bf \color{red} Médio}}
+%\newcommand{\hard}{{\bf \color{red} Difícil}}
