@@ -1,23 +1,39 @@
 \usepackage{tikz}
-\newcommand{\easy}{\hfill
-\begin{tikzpicture}[scale=0.25]
-  \draw[fill] (0,0) circle (1);
-  \draw[fill=green] (90:1) -- (210:1) -- (330:1) -- (90:1);
+\newcommand{\easy}{
+\begin{tikzpicture}[scale=0.5]
+  \draw[fill] (0,0) circle (10pt);
+  \draw[fill=green] (90:10pt) -- (210:10pt) -- (330:10pt) -- (90:10pt);
 \end{tikzpicture}}
-\newcommand{\medium}{\hfill
-\begin{tikzpicture}[scale=0.25]
-  \draw[fill] (0,0) circle (1);
-  \draw[fill=yellow] (45:1) -- (135:1) -- (225:1) -- (315:1) -- (45:1);
+\newcommand{\medium}{
+\begin{tikzpicture}[scale=0.5]
+  \draw[fill] (0,0) circle (10pt);
+  \draw[fill=yellow] (45:10pt) -- (135:10pt) -- (225:10pt) -- (315:10pt) --
+  (45:10pt);
 \end{tikzpicture}}
-\newcommand{\hard}{\hfill
-\begin{tikzpicture}[scale=0.25]
-  \draw[fill] (0,0) circle (1);
-  \draw[fill=orange] (0+18:1) -- (72+18:1) -- (72*2+18:1) -- (72*3+18:1) -- 
-    (72*4+18:1) -- (72*5+18:1);
+\newcommand{\hard}{
+\begin{tikzpicture}[scale=0.5]
+  \draw[fill] (0,0) circle (10pt);
+  \draw[fill=orange] (0+18:10pt) -- (72+18:10pt) -- (72*2+18:10pt) --
+  (72*3+18:10pt) -- (72*4+18:10pt) -- (72*5+18:10pt);
 \end{tikzpicture}}
-\newcommand{\veryhard}{\hfill
-\begin{tikzpicture}[scale=0.25]
-  \draw[fill] (0,0) circle (1);
-  \draw[fill=red] (30:1) -- (90:1) -- (150:1) -- (210:1) -- (270:1) --
-    (330:1) -- (30:1);
+\newcommand{\veryhard}{
+\begin{tikzpicture}[scale=0.5]
+  \draw[fill] (0,0) circle (10pt);
+  \draw[fill=red] (30:10pt) -- (90:10pt) -- (150:10pt) -- (210:10pt) --
+  (270:10pt) -- (330:10pt) -- (30:10pt);
 \end{tikzpicture}}
+
+\usepackage{exercise}
+\renewcommand{\ExerciseHeader}{\ExerciseHeaderDifficulty \ExerciseLabel.}
+\renewcommand{\marker}[2]{
+\ifnum\ExerciseDifficulty = 1 \medium
+\else
+  \ifnum\ExerciseDifficulty = 2 \hard
+  \else
+    \ifnum\ExerciseDifficulty = 3 \veryhard
+    \else
+    \easy
+    \fi
+  \fi
+\fi}
+\renewcommand{\AnswerHeader}{\textbf{Resposta de \ExerciseLabel: }}

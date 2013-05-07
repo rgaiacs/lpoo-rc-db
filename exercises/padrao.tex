@@ -1,59 +1,45 @@
-\documentclass[letterpaper,11pt]{exam}
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{ae}
-\usepackage[utf8]{inputenc}
+\usepackage[top=3cm, bottom=3cm, left=2cm, right=2cm]{geometry}
 \usepackage[dvipsnames]{color}
 \usepackage{graphicx}
-\usepackage{epsfig}
-\usepackage{makeidx}
-\usepackage{multicol}
-\usepackage{amssymb, amsmath, amsfonts}
-\bibliographystyle{plain}
-\topmargin		-1 cm
-\hoffset		0 cm
-\voffset		0 cm
-\evensidemargin		0 cm
-\oddsidemargin		0 cm
-\setlength{\textwidth}{16 cm}
-\setlength{\textheight}{22 cm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
 \usepackage{lpoo}
+\usepackage{listings}
+\bibliographystyle{plain}
 
 \title{ LPOO - Rede de Colaboração \\
 ASSUNTO - ID XXX - Exercícios }
 \author{ AUTOR }
 \date{ Última atualização: \today }
 
-\pointname{}
-\boxedpoints
-\renewcommand{\thequestion}{
-\bf 
-\ifnum\value{question} < 10
-  000\arabic{question}
-\else 
-  \ifnum\value{question} < 100
-    00\arabic{question}
-  \else
-    \ifnum\value{question} < 1000
-      0\arabic{question}
-    \else
-      \arabic{question}
-    \fi
-  \fi
-\fi
-}
-
 \begin{document}
 \maketitle
 
-\begin{questions}
-  \question[\easy]  Fácil
-  \setcounter{question}{25}
-  \question[\medium] Médio
-  \setcounter{question}{250}
-  \question[\hard] Difícil
-  \setcounter{question}{2500}
-  \question[\veryhard] Muito Difícil
-\end{questions}
+Este é o padrão de exercícios a ser seguido.
 
+Para os exercícios é utilizado o pacote \verb+exercise+ pois este oferece várias
+opções e possibilita a construção de um banco de dados de questões.
+
+Para o tema \verb+FOO+ deve existir um arquivo \verb+FOO-db.tex+ onde os
+exercícios são armazenados. Cada exercício é da forma:
+\begin{lstlisting}
+\begin{Exercise}[label={XXXX}, difficulty=Y]
+  Pergunta.
+\end{Exercise}
+\begin{Answer}[ref={XXXX}]
+  Resposta.
+\end{Answer}
+\end{lstlisting}
+onde \verb+XXXX+ é um número correspondendo ao ID do exercício e \verb+Y+ é um
+número entre 0 e 3 correspondendo a dificuldade. Para mais exemplos, veja o
+arquivo \verb+padrao-db.tex+.
+
+\input{padrao-db}
+\ExerciseSelect[label={easy0, easy1, medium, hard, veryhard, lstlisting}]
 \end{document}
