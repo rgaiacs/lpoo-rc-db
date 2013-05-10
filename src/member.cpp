@@ -6,9 +6,9 @@ using namespace std;
 
 namespace lpoo {
 
-  Member::Member(string  r, string n, string e, 
+  Member::Member(string r, string n, string e, char d, int p,
       const list<Achievement> & all_achievements) : ra(r),
-      name(n), email(e), exp(0) {
+      name(n), email(e), exp(0), degree(d), program(p) {
     string filename = "database/member_" + ra+ ".db";
     ifstream file(filename.c_str());
     string line;
@@ -40,6 +40,7 @@ namespace lpoo {
     cout << ra << ' ' << name << endl
          << title << endl
          << email << endl
+         << c_programs[program] << " " << degree << endl
          << "Level: " << level << "  Exp: " << exp << endl
          << "Realizações: " << endl;
     list<string>::const_iterator iter, iter_end;

@@ -10,7 +10,7 @@ namespace lpoo {
   
   class Member {
     public:
-      Member(std::string, std::string, std::string, 
+      Member(std::string, std::string, std::string, char, int,
           const std::list<Achievement> &);
       ~Member() {};
 
@@ -22,7 +22,8 @@ namespace lpoo {
       std::string ra, name, email, title;
       int exp, level;
       std::list<std::string> achievements;
-
+      char degree; // Mestrado, Doutorado
+      int program; // Matematica, Estatistica, etc.
   };
 
 };

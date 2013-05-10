@@ -74,15 +74,21 @@ namespace lpoo {
     ifstream file("database/members.db");
 
     string line;
+    char degree;
+    int program;
     while (getline(file, line, c_separator)) {
       string ra = line, name, email;
 
       stringstream aux;
 
       getline(file, name, c_separator);
-      getline(file, email);
+      getline(file, email, c_separator);
+      getline(file, line, c_separator);
+      degree = line.c_str()[0];
+      getline(file, line);
+      aux << line; aux >> program;
 
-      Member member(ra, name, email, achievements);
+      Member member(ra, name, email, degree, program, achievements);
       members.push_back(member);
     }
   }
@@ -175,7 +181,8 @@ namespace lpoo {
   }
 
   void Interface::AddMember() {
-    char ra[256], name[256], email[256];
+    char ra[256], name[256], email[256], degree;
+    int program = -1;
     cout << c_blue_fg + "RA: " + c_no_color;
     cin >> ra;
     cin.ignore();
@@ -183,12 +190,23 @@ namespace lpoo {
     cin.getline(name,128,'\n');
     cout << c_blue_fg + "E-mail: " + c_no_color;
     cin >> email;
-    Member member(ra,name,email,achievements);
+    do {
+      cout << c_blue_fg + "Modalidade (G/M/D): " + c_no_color;
+      cin >> degree;
+    } while (degree != 'G' && degree != 'M' && degree != 'D');
+    cout << c_blue_fg + "Curso: " << endl;
+    while (program < 0 || program > 2) {
+      for (int i = 0; i < 3; i++) 
+        cout << i << " - " << c_programs[i] << endl;
+      cout << "> ";
+      cin >> program;
+    }
+    Member member(ra, name, email, degree, program, achievements);
     members.push_back(member);
 
     ofstream file("database/members.db",std::ofstream::app);
-    file << ra << c_separator << name << c_separator <<
-      email << c_separator << 0 << endl;
+    file << ra << c_separator << name << c_separator << email 
+      << c_separator << degree << c_separator << program << endl;
   }
 
   void Interface::AddSubject() {
