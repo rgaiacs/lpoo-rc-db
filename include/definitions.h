@@ -37,6 +37,17 @@ namespace lpoo {
   const int c_exp_per_difficulty[4] = {5, 15, 40, 90};
   const std::string c_name_difficulty[4] = {"Fácil", "Médio", "Difícil",
       "Muito Difícil" };
+
+  const char c_graduation = 'G';
+  const char c_master = 'M';
+  const char c_doctor = 'D';
+
+  const int c_program_math         = 0;
+  const int c_program_stat         = 1;
+  const int c_program_applied_math = 2;
+
+  const std::string c_programs[3] = {"Matemática", "Estatística",
+      "Matemática Aplicada"};
 };
 
 #endif
