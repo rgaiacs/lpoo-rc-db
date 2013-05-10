@@ -1,10 +1,83 @@
-\begin{Exercise}[label={0001}, difficulty=1]
+\begin{Exercise}[label={0001}, difficulty={1}, origin={bash}]
   Dentro de sua pasta pessoal, crie um arquivo chamado \verb+ex0001.lpoo+
   contendo a listagem detalhado do diretório \verb+/usr/bin+, usando apenas um
   comando. 
 \end{Exercise}
-\begin{Exercise}[label={0002}, difficulty=2]
+\begin{Exercise}[label={0002}, difficulty={2}, origin={bash}]
   Usando apenas um comando, liste todos os arquivos da pasta raiz, separe apenas
   os que tenham a letra \verb+b+, e substitua a palavra \verb+in+ por
   \verb+omba+.
 \end{Exercise}
+\begin{Exercise}[label={0003}, difficulty={1}, origin={gawk}]
+  Considerando que o arquivo \lstinline+example1.apps+ cujas linhas são
+  apresentadas abaixo:
+  \begin{lstlisting}
+@ "Linear"
+"Upper" vector 2 1 1
+"Lower" vector 2 -1 -1
+@@
+
+@ "Evaluator"
+"Executable Name" string "example1"
+"Input Prefix" string "ex1_in"
+"Output Prefix" string "ex1_out"
+@@
+
+@ "Solver" 
+"Debug" int 4
+"Initial X" vector 2 2e-1 0.3
+@@
+  \end{lstlisting}
+  \begin{enumerate}
+    \item Escreva uma chamada do \lstinline+gawk+ que imprima a linha em que
+      \lstinline+Upper+ é informado.
+    \item Escreva uma chamada do \lstinline+gawk+ que imprima a linha em que
+      \lstinline+Lower+ é informado.
+    \item Escreva uma chamada do \lstinline+gawk+ que imprima apenas o inteiro
+      correspondente ao nível do \lstinline+Debug+.
+  \end{enumerate}
+\end{Exercise}
+\begin{Answer}[ref={0003}]
+  \begin{enumerate}
+    \item \lstinline+awk '/Upper/ {print $0}' example1.apps+
+    \item \lstinline+awk '/Lower/ {print $0}' example1.apps+
+    \item \lstinline+awk '/Debug/ {print $3}' example1.apps+
+  \end{enumerate}
+\end{Answer}
+\begin{Exercise}[label={0004}, difficulty={1}, origin={gawk}]
+  Considerando que o arquivo \lstinline+example3.apps+ cujas linhas são
+  apresentadas abaixo:
+  \begin{lstlisting}
+@ "Bounds"
+"Upper" vector 3 30 30 30 
+"Lower" vector 3 DNE 1 DNE
+"Scaling" vector 3 1 1 1 
+@@
+
+@ "Evaluator"
+"Executable Name" string "example3"
+"Input Prefix" string "example3_input"
+"Output Prefix" string "example3_output"
+@@
+
+@ "Solver" 
+"Debug" int 3
+"Bounds Tolerance" double 1e-8
+"Initial Step" double 1
+"Step Tolerance" double 1e-5
+"Sufficient Decrease Factor" double 0
+@@
+  \end{lstlisting}
+  \begin{enumerate}
+    \item Escreva uma chamada do \lstinline+gawk+ e outra do \lstinline+sed+ que
+      mude o nível de \lstinline+Debug+ de 3 para 4.
+    \item Escreva uma chamada do \lstinline+gawk+ e outra do \lstinline+sed+ que
+      mude a tolerância do passo de $1e-5$ para $1e-8$.
+  \end{enumerate}
+\end{Exercise}
+\begin{Answer}[ref={0004}]
+  \begin{enumerate}
+    \item \lstinline+awk '/Debug/ {print $0}' example3.apps | sed 's/3/4/'+
+    \item \lstinline+awk '/Step Tolerance/ {print $0}' example3.apps | sed 's/5/8/'+
+  \end{enumerate}
+\end{Answer}

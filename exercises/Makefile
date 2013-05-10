@@ -1,4 +1,7 @@
-LISTA=padrao.pdf linux-101.pdf
+LISTA=padrao.pdf \
+      linux.pdf \
+      linux-101.pdf \
+      gawk-101.pdf
 
 all: ${LISTA}
 
