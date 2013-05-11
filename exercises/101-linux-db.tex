@@ -3,11 +3,13 @@
   contendo a listagem detalhado do diretório \verb+/usr/bin+, usando apenas um
   comando. 
 \end{Exercise}
+
 \begin{Exercise}[label={0002}, difficulty={2}, origin={bash}]
   Usando apenas um comando, liste todos os arquivos da pasta raiz, separe apenas
   os que tenham a letra \verb+b+, e substitua a palavra \verb+in+ por
   \verb+omba+.
 \end{Exercise}
+
 \begin{Exercise}[label={0003}, difficulty={1}, origin={gawk}]
   Considerando o arquivo \lstinline+example1.apps+ cujas linhas são
   apresentadas abaixo:
@@ -21,6 +23,7 @@
       correspondente ao nível do \lstinline+Debug+.
   \end{enumerate}
 \end{Exercise}
+
 \begin{Answer}[ref={0003}]
   \begin{enumerate}
     \item \lstinline+awk '/Upper/ {print $0}' example1.apps+
@@ -39,6 +42,7 @@
       mude a tolerância do passo de $1e-5$ para $1e-8$.
   \end{enumerate}
 \end{Exercise}
+
 \begin{Answer}[ref={0004}]
   \begin{enumerate}
     \item \lstinline+awk '/Debug/ {print $0}' example3.apps | sed 's/3/4/'+
@@ -60,6 +64,7 @@
       iterações.
   \end{enumerate}
 \end{Exercise}
+
 \begin{Answer}[ref={0005}]
   \begin{enumerate}
     \item \lstinline+awk '/Problem name/ {name = $3}; END {print name}' pspdoc.log+
@@ -75,6 +80,7 @@
   Escreva um programa utilizando o \lstinline+gawk+ que informa o número de
   problemas em que o campo \lstinline+res+ é \lstinline+con+ e \lstinline+unc+.
 \end{Exercise}
+
 \begin{Answer}[ref={0006}]
   \begin{lstlisting}
 BEGIN {c = 0; u = 0}
@@ -90,6 +96,7 @@ END {printf "con = %d\nunc = %d", c, u}
   Escreva um programa utilizando o \lstinline+gawk+ que informa o número de
   problemas que convergiram e a soma do tempo de execução dos mesmos.
 \end{Exercise}
+
 \begin{Answer}[ref={007}]
   \begin{lstlisting}
 BEGIN{c = 0; t = 0}
@@ -100,6 +107,7 @@ END{printf "Converged: %d\nTotal Time: %f\n",  c, t}
 \begin{Exercise}[label={0008}, difficulty={1}, origin={git}]
   Escreva a chamada do Git que inicializar o repositório.
 \end{Exercise}
+
 \begin{Answer}[ref={0008}]
   \begin{lstlisting}
 $ git init
@@ -121,6 +129,7 @@ nothing added to commit but untracked files present (use "git add" to track)
   \end{lstlisting}
   Diga qual arquivo não foi adicionado ao repositório e como fazê-lo.
 \end{Exercise}
+
 \begin{Answer}[ref={0009}]
   O arquivo \lstinline+hello.c+ não foi adicionado ao repositório, para fazê-lo
   utiliza-se:
@@ -144,6 +153,7 @@ $ git status
   \end{lstlisting}
   Diga se é possível criar um commit e como fazê-lo.
 \end{Exercise}
+
 \begin{Answer}[ref={0010}]
   Sim, é possível e para fazê-lo utiliza-se:
   \begin{lstlisting}
@@ -166,6 +176,7 @@ $ git status
   \end{lstlisting}
   Diga se é possível criar um commit e como fazê-lo.
 \end{Exercise}
+
 \begin{Answer}[ref={0011}]
   Sim, é possível e para fazê-lo utiliza-se:
   \begin{lstlisting}
@@ -187,6 +198,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
   \end{lstlisting}
   Diga como fazer para descobrir o que mudou no arquivo \lstinline+hello.c+.
 \end{Exercise}
+
 \begin{Answer}[ref={0012}]
   \begin{lstlisting}
 $ git diff -- hello.c
@@ -199,6 +211,7 @@ $ git diff -- hello.c
 * 81be5db Adicionado arquivo hello.c
   \end{lstlisting}
 \end{Exercise}
+
 \begin{Answer}[ref={0013}]
   \begin{lstlisting}
 $ git log --graph --oneline
