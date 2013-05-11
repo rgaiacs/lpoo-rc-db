@@ -1,7 +1,10 @@
 LISTA=padrao.pdf \
       linux.pdf \
-      linux-101.pdf \
-      gawk-101.pdf
+      linux-03-05-2013-bash.pdf \
+      linux-10-05-2013-gawk.pdf \
+      linux-17-05-2013-git.pdf \
+      c.pdf \
+      c-17-05-2013-io.pdf
 
 all: ${LISTA}
 

@@ -97,3 +97,110 @@ BEGIN{c = 0; t = 0}
 END{printf "Converged: %d\nTotal Time: %f\n",  c, t}
   \end{lstlisting}
 \end{Answer}
+\begin{Exercise}[label={0008}, difficulty={1}, origin={git}]
+  Escreva a chamada do Git que inicializar o repositório.
+\end{Exercise}
+\begin{Answer}[ref={0008}]
+  \begin{lstlisting}
+$ git init
+  \end{lstlisting}
+\end{Answer}
+\begin{Exercise}[label={0009}, difficulty={1}, origin={git}]
+  Considere a situação descrita abaixo:
+  \begin{lstlisting}
+$ git status
+# On branch master
+#
+# Initial commit
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       hello.c
+nothing added to commit but untracked files present (use "git add" to track)
+  \end{lstlisting}
+  Diga qual arquivo não foi adicionado ao repositório e como fazê-lo.
+\end{Exercise}
+\begin{Answer}[ref={0009}]
+  O arquivo \lstinline+hello.c+ não foi adicionado ao repositório, para fazê-lo
+  utiliza-se:
+  \begin{lstlisting}
+$ git add hello.c
+  \end{lstlisting}
+\end{Answer}
+\begin{Exercise}[label={0010}, difficulty={1}, origin={git}]
+  Considere a situação descrita abaixo:
+  \begin{lstlisting}
+$ git status
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+#
+#       new file:   hello.c
+#
+  \end{lstlisting}
+  Diga se é possível criar um commit e como fazê-lo.
+\end{Exercise}
+\begin{Answer}[ref={0010}]
+  Sim, é possível e para fazê-lo utiliza-se:
+  \begin{lstlisting}
+$ git commit -m "Adicionado arquivo hello.c"
+  \end{lstlisting}
+\end{Answer}
+\begin{Exercise}[label={0011}, difficulty={1}, origin={git}]
+  Considere a situação descrita abaixo:
+  \begin{lstlisting}
+$ git status
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+#
+#       new file:   hello.c
+#
+  \end{lstlisting}
+  Diga se é possível criar um commit e como fazê-lo.
+\end{Exercise}
+\begin{Answer}[ref={0011}]
+  Sim, é possível e para fazê-lo utiliza-se:
+  \begin{lstlisting}
+$ git commit -m "Adicionado arquivo hello.c"
+  \end{lstlisting}
+\end{Answer}
+\begin{Exercise}[label={0012}, difficulty={1}, origin={git}]
+  Considere a situação descrita abaixo:
+  \begin{lstlisting}
+$ git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       modified:   hello.c
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+  \end{lstlisting}
+  Diga como fazer para descobrir o que mudou no arquivo \lstinline+hello.c+.
+\end{Exercise}
+\begin{Answer}[ref={0012}]
+  \begin{lstlisting}
+$ git diff -- hello.c
+  \end{lstlisting}
+\end{Answer}
+\begin{Exercise}[label={0013}, difficulty={1}, origin={git}]
+  Diga qual o comando que pode ter gerado a saída abaixo:
+  \begin{lstlisting}
+* 2228f1f Troca de "mundo" por "marte"
+* 81be5db Adicionado arquivo hello.c
+  \end{lstlisting}
+\end{Exercise}
+\begin{Answer}[ref={0013}]
+  \begin{lstlisting}
+$ git log --graph --oneline
+  \end{lstlisting}
+\end{Answer}
