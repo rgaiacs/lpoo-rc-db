@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#### Variables
+
+#debug_is_on="true"
+pdfcompiler="latexmk -silent -pdf"
+
+#### Functions 
+
 function printatscreen() {
   echo -en "\033[0;32m"$*"\033[0m"
 }
@@ -16,6 +23,7 @@ function read_subject() {
   printatscreen "Bem vindo!\n"
   printatscreen "Este script compila os exercicios de acordo com o assunto e as suas\n"
   printatscreen "especificacoes.\n"
+  newline
   printatscreen "Indique o ID do assunto: "
   read subject
   if ls $subject*-db.tex &> /dev/null
@@ -28,9 +36,11 @@ function read_subject() {
     exit 1
   fi
 
+  newline
   printatscreen "Assunto encontrado: ${subdb//-db.tex/}\n"
   printatscreen "Confirma: (S/N): "
   read sorn
+  newline
   while [ $sorn != "N" -a $sorn != "S" ]
   do
     warningprint "Esperado S ou N: "
@@ -50,6 +60,7 @@ function read_subset() {
   printatscreen " E -  IDs especificos\n"
   
   read subset
+  newline
   case $subset in
     A)  subset=""
         pdf_file_name="${subdb//-db.tex/.pdf}"
@@ -72,20 +83,44 @@ function read_subset() {
   esac
 }
 
+function with_answer() {
+  answer="[noanswer]"
+  printatscreen "Choose: \n"
+  printatscreen " 0 - Just exercises (default)\n"
+  printatscreen " 1 - Just answers \n"
+  printatscreen " 2 - Exercises and answers \n"
+  read option
+  case $option in
+    0)  answer="[noanswer]"
+      ;;
+    1)  answer="[answeronly]"
+      pdf_file_name=${pdf_file_name//.pdf/-only-answers.pdf}
+      ;;
+    2)  answer=""
+      pdf_file_name=${pdf_file_name//.pdf/-with-answers.pdf}
+      ;;
+    *)  answer="[noanswer]"
+      answername=""
+      ;;
+  esac
+}
+
 function generate_tmp_file() {
   tmp_file_name="${subdb//-db.tex/}$(cat /dev/urandom | tr -cd 'a-f0-9' | head -c 8).tex"
   cat core.tex > $tmp_file_name
   sed -i "s/SUBJECT/$subject - $subname/" $tmp_file_name
   sed -i "s/SUBDB/$subdb/" $tmp_file_name
   sed -i "s/SUBSET/$subset/" $tmp_file_name
+  sed -i "s/ANSWER/$answer/" $tmp_file_name
   if [ ! -z "$debug_is_on" ]; then
     cat $tmp_file_name
+    rm -f ${tmp_file_name//.tex/}*
     exit 1
   fi
 }
 
 function generate_pdf() {
-  latexmk -silent -pdf $tmp_file_name
+  ${pdfcompiler} $tmp_file_name
   cp ${tmp_file_name//.tex/.pdf} $pdf_file_name
   rm -f ${tmp_file_name//.tex/}*
 }
@@ -123,15 +158,21 @@ function get_specific() {
   read specific
 }
 
+function newline() {
+  echo " "
+}
+
 ####
 
-#debug_is_on="true"
-
 read_subject
-get_origins
+newline
 read_subset
+newline
+with_answer
+newline
 generate_tmp_file
 generate_pdf
 
 exit 0
+
 

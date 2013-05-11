@@ -1,4 +1,27 @@
-\usepackage{tikz}
+\ProvidesPackage{lpoo}[2013/05/11 LPOO Package]
+
+\RequirePackage{tikz}
+\RequirePackage{listings}
+\RequirePackage{xcolor}
+\RequirePackage{textcomp}
+
+\DeclareOption{noanswer}{
+  \PassOptionsToPackage{noanswer}{exercise}
+}
+\DeclareOption{answeronly}{
+  \PassOptionsToPackage{answeronly}{exercise}
+}
+\DeclareOption*{
+  \PackageWarning{lpoo}{Unknown option: '\CurrentOption'. Will try 
+    to pass to package exercise anyway.}
+  \PassOptionsToPackage{\CurrentOption}{exercise}
+}
+
+\ExecuteOptions{...}
+
+\ProcessOptions\relax
+\RequirePackage{exercise}
+
 \newcommand{\easy}{
 \begin{tikzpicture}[scale=0.5]
   \draw[fill] (0,0) circle (10pt);
@@ -23,8 +46,7 @@
   (270:10pt) -- (330:10pt) -- (30:10pt);
 \end{tikzpicture}}
 
-\usepackage[noanswer]{exercise}
-\renewcommand{\ExerciseHeader}{\ExerciseHeaderDifficulty \ExerciseLabel.}
+\renewcommand{\ExerciseHeader}{\ExerciseHeaderDifficulty {\bf \ExerciseLabel}.}
 \renewcommand{\marker}[2]{
 \ifnum\ExerciseDifficulty = 1 \medium
 \else
@@ -37,3 +59,20 @@
   \fi
 \fi}
 \renewcommand{\AnswerHeader}{\textbf{Resposta de \ExerciseLabel: }}
+\renewcommand{\QuestionNB}{\alph{Question}.}
+
+\lstset{ basicstyle=\small\ttfamily,
+  upquote=true,
+  numbers=left,
+  numberstyle=\tiny\ttfamily\color{blue},
+  breaklines,
+  columns=fixed,
+  stringstyle=\ttfamily,
+  showspaces=false,
+  showstringspaces=false,
+  frame=single,
+  rulecolor=\color{black},
+  xleftmargin=1cm,
+  xrightmargin=1cm}
+
+\endinput

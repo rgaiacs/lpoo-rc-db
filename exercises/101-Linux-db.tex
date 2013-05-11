@@ -11,74 +11,71 @@
 \end{Exercise}
 
 \begin{Exercise}[label={0003}, difficulty={1}, origin={gawk}]
-  Considerando o arquivo \lstinline+example1.apps+ cujas linhas são
+  Considerando o arquivo \verb+example1.apps+ cujas linhas são
   apresentadas abaixo:
   \lstinputlisting{aux/example1.apps}
-  \begin{enumerate}
-    \item Escreva uma chamada do \lstinline+gawk+ que imprima a linha em que
-      \lstinline+Upper+ é informado.
-    \item Escreva uma chamada do \lstinline+gawk+ que imprima a linha em que
-      \lstinline+Lower+ é informado.
-    \item Escreva uma chamada do \lstinline+gawk+ que imprima apenas o inteiro
-      correspondente ao nível do \lstinline+Debug+.
-  \end{enumerate}
+    \Question Escreva uma chamada do \verb+gawk+ que imprima a linha em que
+      \verb+Upper+ é informado.
+    \Question Escreva uma chamada do \verb+gawk+ que imprima a linha em que
+      \verb+Lower+ é informado.
+    \Question Escreva uma chamada do \verb+gawk+ que imprima apenas o inteiro
+      correspondente ao nível do \verb+Debug+.
 \end{Exercise}
 
 \begin{Answer}[ref={0003}]
-  \begin{enumerate}
-    \item \lstinline+awk '/Upper/ {print $0}' example1.apps+
-    \item \lstinline+awk '/Lower/ {print $0}' example1.apps+
-    \item \lstinline+awk '/Debug/ {print $3}' example1.apps+
-  \end{enumerate}
+  \Question \verb+awk '/Upper/ {print $0}' example1.apps+
+  \Question \verb+awk '/Lower/ {print $0}' example1.apps+
+  \Question \verb+awk '/Debug/ {print $3}' example1.apps+
 \end{Answer}
+
 \begin{Exercise}[label={0004}, difficulty={1}, origin={gawk}]
-  Considerando o arquivo \lstinline+example3.apps+ cujas linhas são
+  Considerando o arquivo \verb+example3.apps+ cujas linhas são
   apresentadas abaixo:
   \lstinputlisting{aux/example3.apps}
   \begin{enumerate}
-    \item Escreva uma chamada do \lstinline+gawk+ e outra do \lstinline+sed+ que
-      mude o nível de \lstinline+Debug+ de 3 para 4.
-    \item Escreva uma chamada do \lstinline+gawk+ e outra do \lstinline+sed+ que
+    \item Escreva uma chamada do \verb+gawk+ e outra do \verb+sed+ que
+      mude o nível de \verb+Debug+ de 3 para 4.
+    \item Escreva uma chamada do \verb+gawk+ e outra do \verb+sed+ que
       mude a tolerância do passo de $1e-5$ para $1e-8$.
   \end{enumerate}
 \end{Exercise}
 
 \begin{Answer}[ref={0004}]
   \begin{enumerate}
-    \item \lstinline+awk '/Debug/ {print $0}' example3.apps | sed 's/3/4/'+
-    \item \lstinline+awk '/Step Tolerance/ {print $0}' example3.apps | sed 's/5/8/'+
+    \item \verb+awk '/Debug/ {print $0}' example3.apps | sed 's/3/4/'+
+    \item \verb+awk '/Step Tolerance/ {print $0}' example3.apps | sed 's/5/8/'+
   \end{enumerate}
 \end{Answer}
 \begin{Exercise}[label={0005}, difficulty={1}, origin={gawk}]
-  Considerando o arquivo \lstinline+example3.apps+ cujas linhas são
+  Considerando o arquivo \verb+example3.apps+ cujas linhas são
   apresentadas abaixo:
   \lstinputlisting{aux/pspdoc.log}
   \begin{enumerate}
-    \item Escreva uma chamada do \lstinline+gawk+ que informe o nome do
+    \item Escreva uma chamada do \verb+gawk+ que informe o nome do
       problema apenas uma vez.
-    \item Escreva uma chamada do \lstinline+gawk+ que informe o número de
+    \item Escreva uma chamada do \verb+gawk+ que informe o número de
       variáveis.
-    \item Escreva uma chamada do \lstinline+gawk+ para determinar se o algoritmo
+    \item Escreva uma chamada do \verb+gawk+ para determinar se o algoritmo
       convergiu.
-    \item Escreva uma chamada do \lstinline+gawk+ que informe o número de
+    \item Escreva uma chamada do \verb+gawk+ que informe o número de
       iterações.
   \end{enumerate}
 \end{Exercise}
 
 \begin{Answer}[ref={0005}]
   \begin{enumerate}
-    \item \lstinline+awk '/Problem name/ {name = $3}; END {print name}' pspdoc.log+
-    \item \lstinline+awk '/Number of Variables/ {print $4}' pspdoc.log+
-    \item \lstinline+awk '/The Algorithm has Converged/ {print "Convergiu"}' pspdoc.log+
-    \item \lstinline+awk '/Number of Iterations/ {print $5}' pspdoc.log+
+    \item \verb+awk '/Problem name/ {name = $3}; END {print name}' pspdoc.log+
+    \item \verb+awk '/Number of Variables/ {print $4}' pspdoc.log+
+    \item \verb+awk '/The Algorithm has Converged/ {print "Convergiu"}' pspdoc.log+
+    \item \verb+awk '/Number of Iterations/ {print $5}' pspdoc.log+
   \end{enumerate}
 \end{Answer}
 \begin{Exercise}[label={0006}, difficulty={2}, origin={gawk}]
-  Considerando o arquivo \lstinline+rhomax-table.tex+ cujas linhas são
+  Considerando o arquivo \verb+rhomax-table.tex+ cujas linhas são
   apresentadas abaixo:
   \lstinputlisting{aux/pspdoc.log}
-  Escreva um programa utilizando o \lstinline+gawk+ que informa o número de
-  problemas em que o campo \lstinline+res+ é \lstinline+con+ e \lstinline+unc+.
+  Escreva um programa utilizando o \verb+gawk+ que informa o número de
+  problemas em que o campo \verb+res+ é \verb+con+ e \verb+unc+.
 \end{Exercise}
 
 \begin{Answer}[ref={0006}]
@@ -90,10 +87,10 @@ END {printf "con = %d\nunc = %d", c, u}
   \end{lstlisting}
 \end{Answer}
 \begin{Exercise}[label={0007}, difficulty={2}, origin={gawk}]
-  Considerando o arquivo \lstinline+dcicpp.col+ cujas linhas são
+  Considerando o arquivo \verb+dcicpp.col+ cujas linhas são
   apresentadas abaixo:
   \lstinputlisting{aux/dcicpp.col}
-  Escreva um programa utilizando o \lstinline+gawk+ que informa o número de
+  Escreva um programa utilizando o \verb+gawk+ que informa o número de
   problemas que convergiram e a soma do tempo de execução dos mesmos.
 \end{Exercise}
 
@@ -131,7 +128,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 \end{Exercise}
 
 \begin{Answer}[ref={0009}]
-  O arquivo \lstinline+hello.c+ não foi adicionado ao repositório, para fazê-lo
+  O arquivo \verb+hello.c+ não foi adicionado ao repositório, para fazê-lo
   utiliza-se:
   \begin{lstlisting}
 $ git add hello.c
@@ -196,7 +193,7 @@ $ git status
 #
 no changes added to commit (use "git add" and/or "git commit -a")
   \end{lstlisting}
-  Diga como fazer para descobrir o que mudou no arquivo \lstinline+hello.c+.
+  Diga como fazer para descobrir o que mudou no arquivo \verb+hello.c+.
 \end{Exercise}
 
 \begin{Answer}[ref={0012}]
