@@ -6,3 +6,4 @@ lpoo-rc-db
 *.fdb_latexmk
 *.fls
 *.log
+*.pdf

@@ -46,13 +46,25 @@ function read_subset() {
   printatscreen "Que selecao de exercicios voce quer?\n"
   printatscreen " A -  Todos\n"
   printatscreen " O -  Com assunto especifico\n"
+  printatscreen " D -  Com dificuldade especifica\n"
+  printatscreen " E -  IDs especificos\n"
   
   read subset
   case $subset in
     A)  subset=""
+        pdf_file_name="${subdb//-db.tex/.pdf}"
       ;;
     O)  get_origin
+        pdf_file_name="${subdb//-db.tex/-origin-$origin.pdf}"
         subset="[origin={$origin}]"
+      ;;
+    D)  get_difficulty
+        pdf_file_name="${subdb//-db.tex/-diff-$difficulty.pdf}"
+        subset="[difficulty={$difficulty}]"
+      ;;
+    E)  get_specific
+        pdf_file_name="${subdb//-db.tex/-specific.pdf}"
+        subset="[label={$specific}]"
       ;;
     *)  errorprint "Selecao nao encontrada\n"
         exit 1
@@ -66,12 +78,14 @@ function generate_tmp_file() {
   sed -i "s/SUBJECT/$subject - $subname/" $tmp_file_name
   sed -i "s/SUBDB/$subdb/" $tmp_file_name
   sed -i "s/SUBSET/$subset/" $tmp_file_name
-  cat $tmp_file_name
+  if [ ! -z "$debug_is_on" ]; then
+    cat $tmp_file_name
+    exit 1
+  fi
 }
 
 function generate_pdf() {
-  pdf_file_name="${subdb//-db.tex/.pdf}"
-  latexmk -pdf $tmp_file_name
+  latexmk -silent -pdf $tmp_file_name
   cp ${tmp_file_name//.tex/.pdf} $pdf_file_name
   rm -f ${tmp_file_name//.tex/}*
 }
@@ -96,7 +110,22 @@ function list_origins() {
   fi
 }
 
+function get_difficulty() {
+  printatscreen "Coloque as dificuldades desejadas separadas por , sem espaco\n"
+  printatscreen "1-Facil, 2-Medio, 3-Dificil, 4-Muito Dificil\n",
+  printatscreen "> "
+  read difficulty
+}
+
+function get_specific() {
+  printatscreen "Coloque os IDs dos exercicios separados por , sem espaco\n"
+  printatscreen "> "
+  read specific
+}
+
 ####
+
+#debug_is_on="true"
 
 read_subject
 get_origins
