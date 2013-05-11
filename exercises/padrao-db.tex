@@ -24,14 +24,11 @@
 \end{Answer}
 \begin{Exercise}[label={lstlisting}, difficulty=0]
   Esta é uma questão que mostra o uso do pacote \verb+lstlisting+.
-  \begin{lstlisting}
-#include <stdlib.h>
-#include <stdio.h>
-
-int main() {
-  return 0;
-}
-  \end{lstlisting}
+  \lstinputlisting{aux/padrao.c}
+  Códigos e arquivos que o aluno passa precisar devem ser
+  ``impressos''/incluidos no exercício utilizando o comando
+  \verb+lstinputlisting+ do pacote \verb+lstlisting+ pois o \verb+Makefile+ gera
+  automaticamente um arquivo \verb+tar+ contendo estes arquivos.
 \end{Exercise}
 \begin{Answer}[ref={lstlisting}]
   Resposta de um exercício.

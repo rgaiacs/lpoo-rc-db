@@ -1,0 +1,37 @@
+[19:16:29]Running PSPDOC
+sifdecode  PSPDOC
+
+ Problem name: PSPDOC    
+
+ Double precision version will be formed. 
+
+ The objective function uses        2 nonlinear groups
+ 
+ There are        3 free variables
+ There  is        1 variable  bounded only from above 
+ 
+ 
+**********************************************************
+Problem name: PSPDOC  
+
+Number of Variables: 4
+Number of Constraints: 0
+             Equality: 0
+           Inequality: 0
+
+EXIT: The Algorithm has Converged
+f(x) = 2.41421
+|c(x)| = 0
+|g(x) + J(x)'*y| = 2.11481e-08
+y offset = 0
+BFGS? no
+Number of Iterations = 9
+Elapsed Time = 0.00047493 s
+x: 
+ -1 
+2.75217e-13 
+1.17866e-07 
+1.17866e-07 
+**********************************************************
+Setup time: 0
+Execution time: 0

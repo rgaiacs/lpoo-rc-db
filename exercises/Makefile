@@ -7,6 +7,7 @@ all: ${LISTA}
 
 %.pdf: %.tex
 	latexmk -pdf $<
+	-tar -cf $(subst .tex,.tar,$<) `grep 'aux/' $(subst .tex,.fls,$<) | uniq | sed 's/INPUT //'`
 
 clean:
 	-rm *.acn
@@ -34,11 +35,13 @@ clean:
 	-rm *.nav
 	-rm *.nlo
 	-rm *.out
+	-rm *.pdf
 	-rm *.pdfsync
 	-rm *.ps
 	-rm *.snm
 	-rm *.synctex.gz
+	-rm *.tar
 	-rm *.toc
+	-rm *.tdo
 	-rm *.vrb
 	-rm *.xdy
-	-rm *.tdo

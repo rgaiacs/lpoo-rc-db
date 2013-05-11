@@ -1,0 +1,15 @@
+@ "Linear"
+"Upper" vector 2 1 1
+"Lower" vector 2 -1 -1
+@@
+
+@ "Evaluator"
+"Executable Name" string "example1"
+"Input Prefix" string "ex1_in"
+"Output Prefix" string "ex1_out"
+@@
+
+@ "Solver" 
+"Debug" int 4
+"Initial X" vector 2 2e-1 0.3
+@@

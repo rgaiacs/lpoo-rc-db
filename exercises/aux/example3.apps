@@ -1,0 +1,19 @@
+@ "Bounds"
+"Upper" vector 3 30 30 30 
+"Lower" vector 3 DNE 1 DNE
+"Scaling" vector 3 1 1 1 
+@@
+
+@ "Evaluator"
+"Executable Name" string "example3"
+"Input Prefix" string "example3_input"
+"Output Prefix" string "example3_output"
+@@
+
+@ "Solver" 
+"Debug" int 3
+"Bounds Tolerance" double 1e-8
+"Initial Step" double 1
+"Step Tolerance" double 1e-5
+"Sufficient Decrease Factor" double 0
+@@
