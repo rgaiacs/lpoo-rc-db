@@ -3,6 +3,8 @@
 \RequirePackage{tikz}
 \RequirePackage{listings}
 \RequirePackage{xcolor}
+\PassOptionsToPackage{dvipscolors}{color}
+\RequirePackage{color}
 \RequirePackage{textcomp}
 
 \DeclareOption{noanswer}{
@@ -58,10 +60,14 @@
     \fi
   \fi
 \fi}
-\renewcommand{\AnswerHeader}{\textbf{Resposta de \ExerciseLabel: }}
+
+\definecolor{darkred}{rgb}{0.8,0.0,0.0}
+
+\renewcommand{\AnswerHeader}{\medskip{\color{darkred} \bf Resposta de 
+  \ExerciseLabel}\smallskip}
 \renewcommand{\QuestionNB}{\alph{Question}.}
 
-\lstset{ basicstyle=\small\ttfamily,
+\lstset{ basicstyle=\ttfamily,
   upquote=true,
   numbers=left,
   numberstyle=\tiny\ttfamily\color{blue},
