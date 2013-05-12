@@ -2,42 +2,84 @@
 
 O Banco de Questões utiliza o pacote `exercise`.
 
-De toda forma, acredita-se que você não terá dificuldades se utilizar os
-arquivos `padrao.tex` e `padrao-db.tex` como templates.
+Para criar exercícios, utilize o arquivo `padrao-db.tex` como template.
+
+Não é necessário criar um outro arquivo para ver o resultado. Utilize
+os comandos prontos de compilação.
 
 # Compilação
 
 Para compilar todas as listas de exercícios, utilize
 
-    $ make -B
+    $ make all
 
 Para compilar apenas uma lista, utilize
 
-    $ make -B LISTA=lista_desejada.pdf
+    $ make lista LISTA=<ID>
 
-onde `lista_desejada.pdf` é o arquivo que deseja.
+onde ID  é o id do assunto desejado.
 
-A flag `-B` é necessária pois as dependência são verificadas pelo `latexmk`.
+Ex.: `make lista LISTA=101`, `make lista LISTA=103`
+
+## Listas avançadas
+
+Para gerar uma lista com opções especiais, use o script `./install.sh`
+
+A chamada usual é 
+
+    $ ./install.sh -A <ID> --default
+
+que compila o assunto ID com todos os exercícios sem respostas.
+
+Você também pode especificar subconjuntos de exercícios. Você pode
+selecionar por sub-assuntos, por dificuldade, ou problemas específicos.
+
+Além disso, podemos selecionar se queremos apenas os exercícios,
+apenas as respostas, ou ambos.
+
+Para verificar todas opções, use
+
+    $ ./install.sh -h
 
 # Convenções
 
 ## Nomes de arquivos
 
-Os nomes de arquivos devem ser em letras minúsculas e com `_` no lugar de
-espaços.
+Os nomes de arquivos devem ser `XXX-<Nome>-db.tex`. 
 
-Existem três tipos de arquivos:
+`XXX` deve ser o ID do assunto
+e <Nome> deve ser o nome do assunto como irá aparecer no título da lista.
+Preferencialmente coloque maiúscula na primeira letra e minúscula nas outras.
 
-1. Banco de dados das questões (por assunto).
+Ex.: `101-Linux-db.tex`, `103-C,C++-db.tex`.
 
-   Para o assunto FOO de código XXX, o arquivo deve-se chamar `foo-db.tex`.
+## Formato dos exercícios
 
-2. Lista com todas as questões de um assunto.
+Cada arquivo `XXX-<Nome>-db.tex` é composto de perguntas e respostas.
+As perguntas devem ter sempre um label para identificar o exercício,
+uma dificuldade e uma tag.
 
-   Para o assunto FOO de código XXX, o arquivo deve-se chamar `foo.tex`.
+O label é um ID que começa no 0001 e vai até 9999. Não pule nenhum número
+e escreva com os 4 dígitos.
 
-3. Lista com as questões de uma dada aula.
+O formato dos exercícios é
 
-   Sendo a aula do dia DD/MM/AAAA sobre o assunto FOO de código XXX em que foi
-   abordado o tema BAR, o arquivo deve-se chamar `foo-DD-MM-AAAA-bar.tex` (ou
-   `foo-DD-MM-AAAA-bar.tex`).
+    \begin{Exercise}[label={XXXX}, difficulty={Y}, origin={BAR}]
+      Pergunta
+      \Question Item A, se houver
+      \Question Item B, se houver
+    \end{Exercise}
+
+O formato das respostas é
+
+    \begin{Answer}[ref={XXXX}]
+      Resposta.
+      \Question Resposta do item A, se houver
+      \Question Resposta do item B, se houver
+    \end{Answer}
+
+Não use enumerate, use \\Question.
+
+Não use verbatim ou verb, use o pacote listings.
+
+Verifique o arquivo `padrao-db.tex` como exemplo.

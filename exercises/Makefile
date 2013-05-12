@@ -1,9 +1,34 @@
+RM = rm -f
+
+.PHONY: default
+default: error
+
+.PHONY: error
+error:
+	@echo "ERRO Selecione uma opção para o make\n"
+	@grep "^[a-z_]*:" Makefile | awk '{print " - "$$1}' | tr -d :
+
+.PHONY: all
+all:
+	@for id in $$(ls [0-9][0-9][0-9]*-db.tex); do \
+		id=$$(echo $$id | head -c 3); \
+		./install.sh --default -A $$id; \
+	done
+
+.PHONY: lista
+lista:
+	@if [ -z "$(LISTA)" ]; then echo "Defina a variável LISTA"; exit 1; fi
+	./install.sh --default -A $(LISTA)
+
+.PHONY: linux
 linux:
 	./install.sh --default -A 101
 
+.PHONY: ccpp
 ccpp:
 	./install.sh --default -A 103
 
+.PHONY: test
 test:
 	@for answer in noanswer answeronly withanswers; do \
 		./install.sh --debug --$$answer -a -A 101; \
@@ -18,39 +43,44 @@ test:
 		done; \
 	done
 
+.PHONY: clean
 clean:
-	-rm *.acn
-	-rm *.acr
-	-rm *.alg
-	-rm *.aux
-	-rm *.bbl
-	-rm *.blg
-	-rm *.dvi
-	-rm *.fdb_latexmk
-	-rm *.fls
-	-rm *.glg
-	-rm *.glo
-	-rm *.gls
-	-rm *.idx
-	-rm *.ilg
-	-rm *.ind
-	-rm *.ist
-	-rm *.lof
-	-rm *.log
-	-rm *.lot
-	-rm *.maf
-	-rm *.mtc
-	-rm *.mtc0
-	-rm *.nav
-	-rm *.nlo
-	-rm *.out
-	-rm *.pdf
-	-rm *.pdfsync
-	-rm *.ps
-	-rm *.snm
-	-rm *.synctex.gz
-	-rm *.tar
-	-rm *.toc
-	-rm *.tdo
-	-rm *.vrb
-	-rm *.xdy
+	$(RM) *.acn
+	$(RM) *.acr
+	$(RM) *.alg
+	$(RM) *.aux
+	$(RM) *.bbl
+	$(RM) *.blg
+	$(RM) *.dvi
+	$(RM) *.fdb_latexmk
+	$(RM) *.fls
+	$(RM) *.glg
+	$(RM) *.glo
+	$(RM) *.gls
+	$(RM) *.idx
+	$(RM) *.ilg
+	$(RM) *.ind
+	$(RM) *.ist
+	$(RM) *.lof
+	$(RM) *.log
+	$(RM) *.lot
+	$(RM) *.maf
+	$(RM) *.mtc
+	$(RM) *.mtc0
+	$(RM) *.nav
+	$(RM) *.nlo
+	$(RM) *.out
+	$(RM) *.pdf
+	$(RM) *.pdfsync
+	$(RM) *.ps
+	$(RM) *.snm
+	$(RM) *.synctex.gz
+	$(RM) *.tar
+	$(RM) *.toc
+	$(RM) *.tdo
+	$(RM) *.vrb
+	$(RM) *.xdy
+
+.PHONY: purge
+purge: clean
+	
