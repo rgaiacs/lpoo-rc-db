@@ -1,16 +1,22 @@
-LISTA=padrao.pdf \
-      linux.pdf \
-      linux-03-05-2013-bash.pdf \
-      linux-10-05-2013-gawk.pdf \
-      linux-17-05-2013-git.pdf \
-      c.pdf \
-      c-17-05-2013-io.pdf
+linux:
+	./install.sh --default -A 101
 
-all: ${LISTA}
+ccpp:
+	./install.sh --default -A 103
 
-%.pdf: %.tex
-	latexmk -pdf $<
-	-tar -cf $(subst .tex,.tar,$<) `grep 'aux/' $(subst .tex,.fls,$<) | uniq | sed 's/INPUT //'`
+test:
+	@for answer in noanswer answeronly withanswers; do \
+		./install.sh --debug --$$answer -a -A 101; \
+		for origin in bash git gawk; do \
+			./install.sh --debug --$$answer -o $$origin -A 101; \
+		done; \
+		for dif in 0 1 2 3; do \
+			./install.sh --debug --$$answer -d $$dif -A 101; \
+		done; \
+		for sp in 0002 0005 0008; do \
+			./install.sh --debug --$$answer -s $$sp -A 101; \
+		done; \
+	done
 
 clean:
 	-rm *.acn
