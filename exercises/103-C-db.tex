@@ -6,3 +6,109 @@
   A função se chama \lstinline+printf+ e pertence a biblioteca
   \lstinline+stdio.h+.
 \end{Answer}
+
+\begin{Exercise}[label={0002}, difficulty={0}, origin={io}]
+  Faça um programa que lê dois números reais e imprime seu produto.
+\end{Exercise}
+\begin{Answer}[ref={0002}]
+\begin{lstlisting}
+#include <stdio.h>
+
+int main () {
+  float x, y;
+
+  scanf("%f %f", &x, &y);
+  printf("%f * %f = %f\n", x, y, x*y);
+  
+  return 0;
+}
+\end{lstlisting}
+\end{Answer}
+
+\begin{Exercise}[label={0003}, difficulty={1}, origin={io}]
+  Considere o código
+\begin{lstlisting}
+#include <stdio.h>
+
+int main () {
+  float x = 3.1416;
+
+//  printf
+  return 0;
+}
+\end{lstlisting}
+e a saída
+\begin{lstlisting}[showspaces=true]
+   3.142
+\end{lstlisting}
+  Como deve ser a chamada do printf para obter essa saída? Preste atenção na quantidade
+  de espaços na saída.
+\end{Exercise}
+\begin{Answer}[ref={0003}]
+\begin{lstlisting}[firstnumber=6]
+printf("%8.3f\n", x);
+\end{lstlisting}
+\end{Answer}
+
+\begin{Exercise}[label={0004}, difficulty={1}, origin={type}]
+  Qual o erro do programa abaixo?
+\begin{lstlisting}
+#include <stdio.h>
+
+int main () {
+  int x = 0;
+
+  printf("%f\n", x+1);
+  return 0;
+}
+\end{lstlisting}
+\end{Exercise}
+\begin{Answer}[ref={0004}]
+  O printf está errado. Deveria ser \lstinline+%d+ no lugar de
+  \lstinline+%f+.
+\end{Answer}
+
+\begin{Exercise}[label={0005}, difficulty={1}, origin={if}]
+  Faça um programa que lê um número real e imprime o módulo
+  desse número.
+\end{Exercise}
+
+\begin{Exercise}[label={0006}, difficulty={1}, origin={if}]
+  Faça um programa que lê três números reais e os imprime em
+  ordem crescente.
+\end{Exercise}
+
+\begin{Exercise}[label={0007}, difficulty={1}, origin={for}]
+  Faça um programa que lê um número real $x$ e um inteiro $n$ e imprime
+  $x^n$.
+\end{Exercise}
+
+\begin{Exercise}[label={0008}, difficulty={1}, origin={for}]
+  Faça um programa que lê um número inteiro $n$ e imprime um triângulo
+  no formato
+\begin{lstlisting}
+*
+**
+***
+****
+\end{lstlisting}
+  com $n$ linhas.
+\end{Exercise}
+
+\begin{Exercise}[label={0009}, difficulty={2}, origin={for}]
+  Faça um programa que lê um número inteiro $n$ e
+  \Question se $n$ for 0 ou negativo, retorna uma mensagem de erro;
+  \Question se $n$ é positivo, imprime todos os divisores de $n$.
+\end{Exercise}
+
+\begin{Exercise}[label={0010}, difficulty={3}, origin={for}]
+  Faça um programa que lê um número real $x$ e  calcula $e^x$ 
+  utilizando a aproximação
+  $$ e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^4}{4!} +
+  \dots + \frac{x^N}{N!} = \sum_{k=0}^N\frac{x^k}{k!} $$
+  usando $N = 50$. Sua implementação deve
+  \Question verificar se $x$ é nulo e, caso positivo, retornar o
+    valor esperado trivialmente;
+  \Question conseguir calcular $e^{30}$. Para isso, é preciso
+    tomar muito cuidado com a maneira de calcular os termos.
+\end{Exercise}
