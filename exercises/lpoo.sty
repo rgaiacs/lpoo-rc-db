@@ -25,27 +25,25 @@
 \RequirePackage{exercise}
 
 \newcommand{\easy}{
-\begin{tikzpicture}[scale=0.5]
-  \draw[fill] (0,0) circle (10pt);
-  \draw[fill=green] (90:10pt) -- (210:10pt) -- (330:10pt) -- (90:10pt);
+\begin{tikzpicture}[scale=0.6]
+  \draw[fill] (0,0) circle (11pt);
+  \draw[fill,green] (90:10pt) -- (210:10pt) -- (330:10pt) -- (90:10pt);
 \end{tikzpicture}}
 \newcommand{\medium}{
-\begin{tikzpicture}[scale=0.5]
-  \draw[fill] (0,0) circle (10pt);
-  \draw[fill=yellow] (45:10pt) -- (135:10pt) -- (225:10pt) -- (315:10pt) --
+\begin{tikzpicture}[scale=0.6]
+  \draw[fill] (0,0) circle (11pt);
+  \draw[fill,yellow] (45:10pt) -- (135:10pt) -- (225:10pt) -- (315:10pt) --
   (45:10pt);
 \end{tikzpicture}}
 \newcommand{\hard}{
-\begin{tikzpicture}[scale=0.5]
-  \draw[fill] (0,0) circle (10pt);
-  \draw[fill=orange] (0+18:10pt) -- (72+18:10pt) -- (72*2+18:10pt) --
-  (72*3+18:10pt) -- (72*4+18:10pt) -- (72*5+18:10pt);
+\begin{tikzpicture}[scale=0.6]
+  \draw[fill] (0,0) circle (11pt);
+  \draw[fill,orange] (18:10pt) \foreach \n in {1,2,...,5} { -- ({72*\n+18}:10pt)};
 \end{tikzpicture}}
 \newcommand{\veryhard}{
-\begin{tikzpicture}[scale=0.5]
-  \draw[fill] (0,0) circle (10pt);
-  \draw[fill=red] (30:10pt) -- (90:10pt) -- (150:10pt) -- (210:10pt) --
-  (270:10pt) -- (330:10pt) -- (30:10pt);
+\begin{tikzpicture}[scale=0.6]
+  \draw[fill] (0,0) circle (11pt);
+  \draw[fill,red] (18:10pt) \foreach \n in {1,2,3,4,5} { -- ({18+\n*2*72}:10pt)};
 \end{tikzpicture}}
 
 \renewcommand{\ExerciseHeader}{\ExerciseHeaderDifficulty {\bf \ExerciseLabel}.}
