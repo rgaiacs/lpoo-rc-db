@@ -1,7 +1,12 @@
+PDFCOMPILER = latexmk -pdf
 RM = rm -f
 
 .PHONY: default
 default: error
+
+%.pdf: %.tex
+	$(PDFCOMPILER) -pdf $<
+	-tar -cf $(subst .tex,.tar,$<) `grep 'aux/' $(subst .tex,.fls,$<)
 
 .PHONY: error
 error:

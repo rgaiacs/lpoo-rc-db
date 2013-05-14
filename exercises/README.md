@@ -21,6 +21,11 @@ onde ID  é o id do assunto desejado.
 
 Ex.: `make lista LISTA=101`, `make lista LISTA=103`
 
+Para listas manuais, crie seu arquivo `meu.tex` (possivelmente uma
+cópia de padrao.tex) e compile com
+
+    $ make meu.pdf
+
 ## Listas avançadas
 
 Para gerar uma lista com opções especiais, use o script `./install.sh`
