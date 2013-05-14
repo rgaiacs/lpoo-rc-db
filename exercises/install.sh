@@ -5,6 +5,7 @@
 #debug_is_on="true"
 #dont_process="true"
 pdfcompiler="latexmk -silent -pdf"
+#pdfcompiler="latexmk -pdf"
 
 #### Functions 
 
