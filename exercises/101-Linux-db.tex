@@ -3,7 +3,6 @@
   contendo a listagem detalhado do diretório \lstinline+/usr/bin+, usando apenas um
   comando. 
 \end{Exercise}
-
 \begin{Answer}[ref={0001}]
 \begin{lstlisting}
 ls -l /usr/bin > ~/ex0001.lpoo
@@ -15,7 +14,6 @@ ls -l /usr/bin > ~/ex0001.lpoo
   os que tenham a letra \lstinline+b+, e substitua a palavra \lstinline+in+ por
   \lstinline+omba+.
 \end{Exercise}
-
 \begin{Answer}[ref={0002}]
 \begin{lstlisting}
 ls / | grep b | sed 's/in/omba/g'
@@ -33,7 +31,6 @@ ls / | grep b | sed 's/in/omba/g'
     \Question Escreva uma chamada do \lstinline+gawk+ que imprima apenas o inteiro
       correspondente ao nível do \lstinline+Debug+.
 \end{Exercise}
-
 \begin{Answer}[ref={0003}]
   \Question \lstinline+awk '/Upper/ {print $0}' example1.apps+
   \Question \lstinline+awk '/Lower/ {print $0}' example1.apps+
@@ -49,11 +46,11 @@ ls / | grep b | sed 's/in/omba/g'
     \Question Escreva uma chamada do \lstinline+gawk+ e outra do \lstinline+sed+ que
       mude a tolerância do passo de $1e-5$ para $1e-8$.
 \end{Exercise}
-
 \begin{Answer}[ref={0004}]
     \Question \lstinline+awk '/Debug/ {print $0}' example3.apps | sed 's/3/4/'+
     \Question \lstinline+awk '/Step Tolerance/ {print $0}' example3.apps | sed 's/5/8/'+
 \end{Answer}
+
 \begin{Exercise}[label={0005}, difficulty={1}, origin={gawk}]
   Considerando o arquivo \lstinline+example3.apps+ cujas linhas são
   apresentadas abaixo:
@@ -67,13 +64,13 @@ ls / | grep b | sed 's/in/omba/g'
     \Question Escreva uma chamada do \lstinline+gawk+ que informe o número de
       iterações.
 \end{Exercise}
-
 \begin{Answer}[ref={0005}]
     \Question \lstinline+awk '/Problem name/ {name = $3}; END {print name}' pspdoc.log+
     \Question \lstinline+awk '/Number of Variables/ {print $4}' pspdoc.log+
     \Question \lstinline+awk '/The Algorithm has Converged/ {print "Convergiu"}' pspdoc.log+
     \Question \lstinline+awk '/Number of Iterations/ {print $5}' pspdoc.log+
 \end{Answer}
+
 \begin{Exercise}[label={0006}, difficulty={2}, origin={gawk}]
   Considerando o arquivo \lstinline+rhomax-table.tex+ cujas linhas são
   apresentadas abaixo:
@@ -81,7 +78,6 @@ ls / | grep b | sed 's/in/omba/g'
   Escreva um programa utilizando o \lstinline+gawk+ que informa o número de
   problemas em que o campo \lstinline+res+ é \lstinline+con+ e \lstinline+unc+.
 \end{Exercise}
-
 \begin{Answer}[ref={0006}]
   \begin{lstlisting}
 BEGIN {c = 0; u = 0}
@@ -90,6 +86,7 @@ BEGIN {c = 0; u = 0}
 END {printf "con = %d\nunc = %d", c, u}
   \end{lstlisting}
 \end{Answer}
+
 \begin{Exercise}[label={0007}, difficulty={2}, origin={gawk}]
   Considerando o arquivo \lstinline+dcicpp.col+ cujas linhas são
   apresentadas abaixo:
@@ -97,7 +94,6 @@ END {printf "con = %d\nunc = %d", c, u}
   Escreva um programa utilizando o \lstinline+gawk+ que informa o número de
   problemas que convergiram e a soma do tempo de execução dos mesmos.
 \end{Exercise}
-
 \begin{Answer}[ref={007}]
   \begin{lstlisting}
 BEGIN{c = 0; t = 0}
@@ -105,15 +101,16 @@ BEGIN{c = 0; t = 0}
 END{printf "Converged: %d\nTotal Time: %f\n",  c, t}
   \end{lstlisting}
 \end{Answer}
+
 \begin{Exercise}[label={0008}, difficulty={1}, origin={git}]
   Escreva a chamada do Git que inicializar o repositório.
 \end{Exercise}
-
 \begin{Answer}[ref={0008}]
   \begin{lstlisting}
 $ git init
   \end{lstlisting}
 \end{Answer}
+
 \begin{Exercise}[label={0009}, difficulty={1}, origin={git}]
   Considere a situação descrita abaixo:
   \begin{lstlisting}
@@ -130,7 +127,6 @@ nothing added to commit but untracked files present (use "git add" to track)
   \end{lstlisting}
   Diga qual arquivo não foi adicionado ao repositório e como fazê-lo.
 \end{Exercise}
-
 \begin{Answer}[ref={0009}]
   O arquivo \lstinline+hello.c+ não foi adicionado ao repositório, para fazê-lo
   utiliza-se:
@@ -138,6 +134,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 $ git add hello.c
   \end{lstlisting}
 \end{Answer}
+
 \begin{Exercise}[label={0010}, difficulty={1}, origin={git}]
   Considere a situação descrita abaixo:
   \begin{lstlisting}
@@ -154,13 +151,13 @@ $ git status
   \end{lstlisting}
   Diga se é possível criar um commit e como fazê-lo.
 \end{Exercise}
-
 \begin{Answer}[ref={0010}]
   Sim, é possível e para fazê-lo utiliza-se:
   \begin{lstlisting}
 $ git commit -m "Adicionado arquivo hello.c"
   \end{lstlisting}
 \end{Answer}
+
 \begin{Exercise}[label={0011}, difficulty={1}, origin={git}]
   Considere a situação descrita abaixo:
   \begin{lstlisting}
@@ -177,13 +174,13 @@ $ git status
   \end{lstlisting}
   Diga se é possível criar um commit e como fazê-lo.
 \end{Exercise}
-
 \begin{Answer}[ref={0011}]
   Sim, é possível e para fazê-lo utiliza-se:
   \begin{lstlisting}
 $ git commit -m "Adicionado arquivo hello.c"
   \end{lstlisting}
 \end{Answer}
+
 \begin{Exercise}[label={0012}, difficulty={1}, origin={git}]
   Considere a situação descrita abaixo:
   \begin{lstlisting}
@@ -199,12 +196,12 @@ no changes added to commit (use "git add" and/or "git commit -a")
   \end{lstlisting}
   Diga como fazer para descobrir o que mudou no arquivo \lstinline+hello.c+.
 \end{Exercise}
-
 \begin{Answer}[ref={0012}]
   \begin{lstlisting}
 $ git diff -- hello.c
   \end{lstlisting}
 \end{Answer}
+
 \begin{Exercise}[label={0013}, difficulty={1}, origin={git}]
   Diga qual o comando que pode ter gerado a saída abaixo:
   \begin{lstlisting}
@@ -212,9 +209,128 @@ $ git diff -- hello.c
 * 81be5db Adicionado arquivo hello.c
   \end{lstlisting}
 \end{Exercise}
-
 \begin{Answer}[ref={0013}]
   \begin{lstlisting}
 $ git log --graph --oneline
   \end{lstlisting}
+\end{Answer}
+
+\begin{Exercise}[label={0014}, difficulty={1}, origin={bash}]
+  O programa \lstinline+cat+ copia o conteúdo dos arquivos passados como
+  argumentos para a saída padrão.
+
+  \Question Escreva o comando para que escreva na tela o arquivo
+  \lstinline+/etc/hostname+.
+  \Question Escreva o comando para que escreva na tela o arquivo
+  \lstinline+/etc/hostname+ e depois o arquivo /lstinline+/etc/hosts+.
+\end{Exercise}
+\begin{Answer}[ref={0014}]
+  \Question \lstinline+cat /etc/hostname+
+  \Question \lstinline+cat /etc/hostname /etc/hosts+
+\end{Answer}
+
+\begin{Exercise}[label={0015}, difficulty={1}, origin={bash}]
+  O programa \lstinline+head+ copia o início do conteúdo dos arquivos passados
+  como argumentos para a saída padrão.
+
+  O programa \lstinline+tail+ copia o final do conteúdo dos arquivos passados
+  como argumentos para a saída padrão.
+
+  \Question Escreva o comando para que escreva na tela o início do arquivo
+  \lstinline+/etc/passwd+.
+  \Question Escreva o comando para que escreva na tela o final do arquivo
+  \lstinline+/etc/passwd+.
+\end{Exercise}
+\begin{Answer}[ref={0015}]
+  \Question \lstinline+head /etc/passwd+
+  \Question \lstinline+tail /etc/passwd+
+\end{Answer}
+
+\begin{Exercise}[label={0016}, difficulty={1}, origin={bash}]
+  O programa \lstinline+wc+ recupera várias informações de um arquivo de texto.
+
+  \Question Escreva o comando que imprime na saída padrão o número de
+  caracteres do arquivo \lstinline+/etc/hosts+.
+  \Question Escreva o comando que imprime na saída padrão o número de palavras
+  do arquivo \lstinline+/etc/hosts+.
+  \Question Escreva o comando que imprime na saída padrão o número de linhas
+  do arquivo \lstinline+/etc/hosts+.
+\end{Exercise}
+\begin{Answer}[ref={0016}]
+  \Question \lstinline+wc -m /etc/hosts+
+  \Question \lstinline+wc -w /etc/hosts+
+  \Question \lstinline+wc -l /etc/hosts+
+\end{Answer}
+
+\begin{Exercise}[label={0017}, difficulty={1}, origin={bash}]
+  O programa \lstinline+ls+ lista os arquivos e pastas de um diretório.
+
+  \Question Escreva o comando que imprime na saída a lista do conteúdo do
+  diretório atual.
+  \Question Escreva o comando que imprime na saída a lista do conteúdo da
+  sua home.
+  \Question Escreva o comando que imprime na saída a lista do conteúdo da
+  raiz do sistema.
+\end{Exercise}
+\begin{Answer}[ref={0017}]
+  \Question \lstinline+ls+
+  \Question \lstinline+ls ~+
+  \Question \lstinline+ls /+
+\end{Answer}
+
+\begin{Exercise}[label={0018}, difficulty={1}, origin={bash}]
+  O programa \lstinline+cp+ copia um arquivo.
+
+  O programa \lstinline+mv+ move um arquivo.
+
+  \Question Escreva o comando que copia o arquivo \lstinline+foo+ para o
+  arquivo \lstinline+bar+.
+  \Question Escreva o comando que move o arquivo \lstinline+foo+ para o
+  arquivo \lstinline+bar+.
+\end{Exercise}
+\begin{Answer}[ref={0018}]
+  \Question \lstinline+cp foo bar+
+  \Question \lstinline+mv foo bar+
+\end{Answer}
+
+\begin{Exercise}[label={0019}, difficulty={2}, origin={bash}]
+  Escreva o comando que copia a pasta \lstinline+foo+ para a
+  pasta \lstinline+bar+ (é necessário copiar o conteúdo).
+\end{Exercise}
+\begin{Answer}[ref={0019}]
+  \Question \lstinline+cp -r foo bar+
+\end{Answer}
+
+\begin{Exercise}[label={0020}, difficulty={1}, origin={bash}]
+  O programa \lstinline+mkdir+ cria um novo diretório.
+
+  \Question Escreva o comando para criar o diretório \lstinline+foo+.
+  \Question Escreva o comando para criar os diretórios \lstinline+foo+ e
+  \lstinline+bar+.
+\end{Exercise}
+\begin{Answer}[ref={0020}]
+  \Question \lstinline+mkdir foo+
+  \Question \lstinline+mkdir foo bar+
+\end{Answer}
+
+\begin{Exercise}[label={0021}, difficulty={2}, origin={bash}]
+  Escreva o comando para criar o diretório \lstinline+foo/bar/aux+ supondo que
+  os diretórios \lstinline+foo+ e \lstinline+foo/bar+ não existem.
+\end{Exercise}
+\begin{Answer}[ref={0021}]
+  \lstinline+mkdir -p foo/bar/aux+
+\end{Answer}
+
+\begin{Exercise}[label={0022}, difficulty={1}, origin={bash}]
+  O programa \lstinline+rm+ remove arquivos (e diretórios).
+
+  \Question Escreva o comando para remover o arquivo \lstinline+foo+.
+  \Question Escreva o comando para remover os arquivos \lstinline+foo+ e
+  \lstinline+bar+.
+  \Question Escreva o comando para remover o diretório \lstinline+foo+.
+\end{Exercise}
+\begin{Answer}[ref={0022}]
+  \lstinline+rm foo+
+  \lstinline+rm foo bar+
+  \lstinline+rm -rf foo+
 \end{Answer}
