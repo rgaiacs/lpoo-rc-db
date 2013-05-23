@@ -1,34 +1,51 @@
 \begin{Exercise}[label={easy}, difficulty=0]
-  Esta é uma questão fácil, \verb+difficulty=0+.
+  Esta é uma questão fácil, \lstinline+difficulty=0+.
 \end{Exercise}
 \begin{Answer}[ref={easy}]
   Resposta de um exercício fácil.
 \end{Answer}
+
 \begin{Exercise}[label={medium}, difficulty=1]
-  Esta é uma questão média, \verb+difficulty=1+.
+  Esta é uma questão média, \lstinline+difficulty=1+.
 \end{Exercise}
 \begin{Answer}[ref={medium}]
   Resposta de um exercício médio.
 \end{Answer}
+
 \begin{Exercise}[label={hard}, difficulty=2]
-  Esta é uma questão difícil, \verb+difficulty=2+.
+  Esta é uma questão difícil, \lstinline+difficulty=2+.
 \end{Exercise}
 \begin{Answer}[ref={hard}]
   Resposta de um exercício difícil.
 \end{Answer}
+
 \begin{Exercise}[label={veryhard}, difficulty=3]
-  Esta é uma questão muito difícil, \verb+difficulty=3+.
+  Esta é uma questão muito difícil, \lstinline+difficulty=3+.
 \end{Exercise}
 \begin{Answer}[ref={veryhard}]
   Resposta de um exercício muito difícil.
 \end{Answer}
+
+\begin{Exercise}[label={question}, difficulty=0]
+  Se a questão tiver itens, deve-se utilizar o comando \lstinline+\Question+.
+
+  \Question Primeiro item.
+  \Question Segundo item.
+\end{Exercise}
+\begin{Answer}[ref={question}]
+  Também deve-se utilizar o camando \lstinline+\Question+ para indicar a
+  resposta dos itens.
+  \Question Resposta do primeiro item.
+  \Question Resposta do segundo item.
+\end{Answer}
+
 \begin{Exercise}[label={lstlisting}, difficulty=0]
-  Esta é uma questão que mostra o uso do pacote \verb+lstlisting+.
+  Esta é uma questão que mostra o uso do pacote \lstinline+lstlisting+.
   \lstinputlisting{aux/padrao.c}
   Códigos e arquivos que o aluno passa precisar devem ser
   ``impressos''/incluidos no exercício utilizando o comando
-  \verb+lstinputlisting+ do pacote \verb+lstlisting+ pois o \verb+Makefile+ gera
-  automaticamente um arquivo \verb+tar+ contendo estes arquivos.
+  \lstinline+lstinputlisting+ do pacote \lstinline+lstlisting+ pois o \lstinline+Makefile+ gera
+  automaticamente um arquivo \lstinline+tar+ contendo estes arquivos.
 \end{Exercise}
 \begin{Answer}[ref={lstlisting}]
   Resposta de um exercício.

@@ -11,7 +11,6 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{lpoo}
-\usepackage{listings}
 \bibliographystyle{plain}
 
 \title{ LPOO - Rede de Colaboração \\
@@ -27,45 +26,45 @@ Este é o padrão de exercícios a ser seguido pela Rede de Colaboração do LPO
 \end{abstract}
 
 \section{Explicação}
-Para os exercícios é utilizado o pacote \verb+exercise+ pois este oferece várias
+Para os exercícios é utilizado o pacote \lstinline+exercise+ pois este oferece várias
 opções e possibilita a construção de um banco de dados de questões. A inclusão
-padrão do pacote \verb+exercise+ é
-\begin{verbatim}
+padrão do pacote \lstinline+exercise+ é
+\begin{lstlisting}
 \usepackage{exercise}
-\end{verbatim}
+\end{lstlisting}
 sendo que no arquivo pdf será incluído os exercícios e as respostas. Se for
 desejado omitir as resposta, utilize
-\begin{verbatim}
+\begin{lstlisting}
 \usepackage[noanswer]{exercise}
-\end{verbatim}
+\end{lstlisting}
 
-Para o tema \verb+FOO+ deve existir um arquivo \verb+FOO-db.tex+ onde os
+Para o tema \lstinline+FOO+ deve existir um arquivo \lstinline+FOO-db.tex+ onde os
 exercícios são armazenados. Cada exercício é da forma:
-\begin{verbatim}
+\begin{lstlisting}
 \begin{Exercise}[label={XXXX}, difficulty=Y, origin={BAR}]
   Pergunta.
 \end{Exercise}
 \begin{Answer}[ref={XXXX}]
   Resposta.
 \end{Answer}
-\end{verbatim}
-onde \verb+XXXX+ é um número correspondendo ao ID do exercício, \verb+Y+ é um
-número entre 0 e 3 correspondendo a dificuldade e \verb+BAR+ é uma tag para o
-exercício (muito provavelmente um subtema). Para mais exemplos, veja o
-arquivo \verb+padrao-db.tex+.
+\end{lstlisting}
+onde \lstinline+XXXX+ é um número correspondendo ao ID do exercício, \lstinline+Y+ é um
+número entre 0 e 3 correspondendo a dificuldade (0 corresponde a fácil e 3 a
+difícil) e \lstinline+BAR+ é uma tag para o exercício (muito provavelmente um
+subtema). Para mais exemplos, veja o arquivo \lstinline+padrao-db.tex+.
 
-A seleção dos exercícios de \verb+FOO-db.tex+ é feita com as linhas abaixo:
-\begin{verbatim}
+A seleção dos exercícios de \lstinline+FOO-db.tex+ é feita com as linhas abaixo:
+\begin{lstlisting}
 \ExerciseSelect[origin={BAR}]
 \input{FOO-db}
 \ExerciseStopSelect
-\end{verbatim}
-onde será selecionado todos os exercícios em que o campo \verb+origin+ é igual a
-\verb+BAR+. Também é possível selecionar utilizando o campo \verb+label+ e
-\verb+difficulty+.
+\end{lstlisting}
+onde será selecionado todos os exercícios em que o campo \lstinline+origin+ é igual a
+\lstinline+BAR+. Também é possível selecionar utilizando o campo \lstinline+label+ e
+\lstinline+difficulty+.
 
 \section{Exemplo}
-\ExerciseSelect[label={easy,medium,hard,veryhard,lstlisting}]
+\ExerciseSelect[label={easy,medium,hard,veryhard,question,lstlisting}]
 \input{padrao-db}
 \ExerciseStopSelect
 \end{document}
