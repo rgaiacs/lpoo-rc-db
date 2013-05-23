@@ -1,4 +1,17 @@
-\begin{Exercise}[label={0001},difficulty={0},origin={bash}]
+% Este arquivo possui questões sobre o GNU/Linux.
+%
+% Aqui é importante fazer uma diferença entre o bash e o coreutils porque é
+% muito comum não saber fazer a diferença.
+%
+% O bash é uma shell (tanto um interpretador de comandos como uma linguagem de
+% programação). O bash possui um pequeno conjunto de comandos próprios que são
+% impossíveis ou inconvenientes de serem implementados separadamente (e.g.,
+% `pwd`, `cd`, `history`, ...).
+%
+% O coreutils é um conjunto de programas/comandos indispensáveis em um
+% computador. É nele que reside os programas para manipulação de arquivos.
+
+\begin{Exercise}[label={0001},difficulty={0},origin={coreutils}]
   Dentro de sua pasta pessoal, crie um arquivo chamado \lstinline+ex0001.lpoo+
   contendo a listagem detalhado do diretório \lstinline+/usr/bin+, usando apenas um
   comando. 
@@ -9,7 +22,7 @@ ls -l /usr/bin > ~/ex0001.lpoo
 \end{lstlisting}
 \end{Answer}
 
-\begin{Exercise}[label={0002},difficulty={2},origin={bash}]
+\begin{Exercise}[label={0002},difficulty={1},origin={coreutils}]
   Usando apenas um comando, liste todos os arquivos da pasta raiz, separe apenas
   os que tenham a letra \lstinline+b+, e substitua a palavra \lstinline+in+ por
   \lstinline+omba+.
@@ -20,7 +33,7 @@ ls / | grep b | sed 's/in/omba/g'
 \end{lstlisting}
 \end{Answer}
 
-\begin{Exercise}[label={0003}, difficulty={1}, origin={gawk}]
+\begin{Exercise}[label={0003}, difficulty={0}, origin={gawk}]
   Considerando o arquivo \lstinline+example1.apps+ cujas linhas são
   apresentadas abaixo:
   \lstinputlisting{aux/example1.apps}
@@ -37,7 +50,7 @@ ls / | grep b | sed 's/in/omba/g'
   \Question \lstinline+awk '/Debug/ {print $3}' example1.apps+
 \end{Answer}
 
-\begin{Exercise}[label={0004}, difficulty={1}, origin={gawk}]
+\begin{Exercise}[label={0004}, difficulty={0}, origin={gawk}]
   Considerando o arquivo \lstinline+example3.apps+ cujas linhas são
   apresentadas abaixo:
   \lstinputlisting{aux/example3.apps}
@@ -51,7 +64,7 @@ ls / | grep b | sed 's/in/omba/g'
     \Question \lstinline+awk '/Step Tolerance/ {print $0}' example3.apps | sed 's/5/8/'+
 \end{Answer}
 
-\begin{Exercise}[label={0005}, difficulty={1}, origin={gawk}]
+\begin{Exercise}[label={0005}, difficulty={0}, origin={gawk}]
   Considerando o arquivo \lstinline+example3.apps+ cujas linhas são
   apresentadas abaixo:
   \lstinputlisting{aux/pspdoc.log}
@@ -71,7 +84,7 @@ ls / | grep b | sed 's/in/omba/g'
     \Question \lstinline+awk '/Number of Iterations/ {print $5}' pspdoc.log+
 \end{Answer}
 
-\begin{Exercise}[label={0006}, difficulty={2}, origin={gawk}]
+\begin{Exercise}[label={0006}, difficulty={1}, origin={gawk}]
   Considerando o arquivo \lstinline+rhomax-table.tex+ cujas linhas são
   apresentadas abaixo:
   \lstinputlisting{aux/rhomax-table.tex}
@@ -87,7 +100,7 @@ END {printf "con = %d\nunc = %d", c, u}
   \end{lstlisting}
 \end{Answer}
 
-\begin{Exercise}[label={0007}, difficulty={2}, origin={gawk}]
+\begin{Exercise}[label={0007}, difficulty={1}, origin={gawk}]
   Considerando o arquivo \lstinline+dcicpp.col+ cujas linhas são
   apresentadas abaixo:
   \lstinputlisting{aux/dcicpp.col}
@@ -102,7 +115,7 @@ END{printf "Converged: %d\nTotal Time: %f\n",  c, t}
   \end{lstlisting}
 \end{Answer}
 
-\begin{Exercise}[label={0008}, difficulty={1}, origin={git}]
+\begin{Exercise}[label={0008}, difficulty={0}, origin={git}]
   Escreva a chamada do Git que inicializar o repositório.
 \end{Exercise}
 \begin{Answer}[ref={0008}]
@@ -111,7 +124,7 @@ $ git init
   \end{lstlisting}
 \end{Answer}
 
-\begin{Exercise}[label={0009}, difficulty={1}, origin={git}]
+\begin{Exercise}[label={0009}, difficulty={0}, origin={git}]
   Considere a situação descrita abaixo:
   \begin{lstlisting}
 $ git status
@@ -135,7 +148,7 @@ $ git add hello.c
   \end{lstlisting}
 \end{Answer}
 
-\begin{Exercise}[label={0010}, difficulty={1}, origin={git}]
+\begin{Exercise}[label={0010}, difficulty={0}, origin={git}]
   Considere a situação descrita abaixo:
   \begin{lstlisting}
 $ git status
@@ -158,30 +171,7 @@ $ git commit -m "Adicionado arquivo hello.c"
   \end{lstlisting}
 \end{Answer}
 
-\begin{Exercise}[label={0011}, difficulty={1}, origin={git}]
-  Considere a situação descrita abaixo:
-  \begin{lstlisting}
-$ git status
-# On branch master
-#
-# Initial commit
-#
-# Changes to be committed:
-#   (use "git rm --cached <file>..." to unstage)
-#
-#       new file:   hello.c
-#
-  \end{lstlisting}
-  Diga se é possível criar um commit e como fazê-lo.
-\end{Exercise}
-\begin{Answer}[ref={0011}]
-  Sim, é possível e para fazê-lo utiliza-se:
-  \begin{lstlisting}
-$ git commit -m "Adicionado arquivo hello.c"
-  \end{lstlisting}
-\end{Answer}
-
-\begin{Exercise}[label={0012}, difficulty={1}, origin={git}]
+\begin{Exercise}[label={0012}, difficulty={0}, origin={git}]
   Considere a situação descrita abaixo:
   \begin{lstlisting}
 $ git status
@@ -202,7 +192,7 @@ $ git diff -- hello.c
   \end{lstlisting}
 \end{Answer}
 
-\begin{Exercise}[label={0013}, difficulty={1}, origin={git}]
+\begin{Exercise}[label={0013}, difficulty={0}, origin={git}]
   Diga qual o comando que pode ter gerado a saída abaixo:
   \begin{lstlisting}
 * 2228f1f Troca de "mundo" por "marte"
@@ -215,7 +205,7 @@ $ git log --graph --oneline
   \end{lstlisting}
 \end{Answer}
 
-\begin{Exercise}[label={0014}, difficulty={1}, origin={bash}]
+\begin{Exercise}[label={0014}, difficulty={0}, origin={coreutils}]
   O programa \lstinline+cat+ copia o conteúdo dos arquivos passados como
   argumentos para a saída padrão.
 
@@ -229,7 +219,7 @@ $ git log --graph --oneline
   \Question \lstinline+cat /etc/hostname /etc/hosts+
 \end{Answer}
 
-\begin{Exercise}[label={0015}, difficulty={1}, origin={bash}]
+\begin{Exercise}[label={0015}, difficulty={0}, origin={coreutils}]
   O programa \lstinline+head+ copia o início do conteúdo dos arquivos passados
   como argumentos para a saída padrão.
 
@@ -246,7 +236,7 @@ $ git log --graph --oneline
   \Question \lstinline+tail /etc/passwd+
 \end{Answer}
 
-\begin{Exercise}[label={0016}, difficulty={1}, origin={bash}]
+\begin{Exercise}[label={0016}, difficulty={0}, origin={coreutils}]
   O programa \lstinline+wc+ recupera várias informações de um arquivo de texto.
 
   \Question Escreva o comando que imprime na saída padrão o número de
@@ -262,7 +252,7 @@ $ git log --graph --oneline
   \Question \lstinline+wc -l /etc/hosts+
 \end{Answer}
 
-\begin{Exercise}[label={0017}, difficulty={1}, origin={bash}]
+\begin{Exercise}[label={0017}, difficulty={1}, origin={coreutils}]
   O programa \lstinline+ls+ lista os arquivos e pastas de um diretório.
 
   \Question Escreva o comando que imprime na saída a lista do conteúdo do
@@ -278,7 +268,7 @@ $ git log --graph --oneline
   \Question \lstinline+ls /+
 \end{Answer}
 
-\begin{Exercise}[label={0018}, difficulty={1}, origin={bash}]
+\begin{Exercise}[label={0018}, difficulty={1}, origin={coreutils}]
   O programa \lstinline+cp+ copia um arquivo.
 
   O programa \lstinline+mv+ move um arquivo.
@@ -293,7 +283,7 @@ $ git log --graph --oneline
   \Question \lstinline+mv foo bar+
 \end{Answer}
 
-\begin{Exercise}[label={0019}, difficulty={2}, origin={bash}]
+\begin{Exercise}[label={0019}, difficulty={2}, origin={coreutils}]
   Escreva o comando que copia a pasta \lstinline+foo+ para a
   pasta \lstinline+bar+ (é necessário copiar o conteúdo).
 \end{Exercise}
@@ -301,7 +291,7 @@ $ git log --graph --oneline
   \Question \lstinline+cp -r foo bar+
 \end{Answer}
 
-\begin{Exercise}[label={0020}, difficulty={1}, origin={bash}]
+\begin{Exercise}[label={0020}, difficulty={1}, origin={coreutils}]
   O programa \lstinline+mkdir+ cria um novo diretório.
 
   \Question Escreva o comando para criar o diretório \lstinline+foo+.
@@ -313,7 +303,7 @@ $ git log --graph --oneline
   \Question \lstinline+mkdir foo bar+
 \end{Answer}
 
-\begin{Exercise}[label={0021}, difficulty={2}, origin={bash}]
+\begin{Exercise}[label={0021}, difficulty={2}, origin={coreutils}]
   Escreva o comando para criar o diretório \lstinline+foo/bar/aux+ supondo que
   os diretórios \lstinline+foo+ e \lstinline+foo/bar+ não existem.
 \end{Exercise}
@@ -321,7 +311,7 @@ $ git log --graph --oneline
   \lstinline+mkdir -p foo/bar/aux+
 \end{Answer}
 
-\begin{Exercise}[label={0022}, difficulty={1}, origin={bash}]
+\begin{Exercise}[label={0022}, difficulty={1}, origin={coreutils}]
   O programa \lstinline+rm+ remove arquivos (e diretórios).
 
   \Question Escreva o comando para remover o arquivo \lstinline+foo+.
@@ -333,4 +323,113 @@ $ git log --graph --oneline
   \lstinline+rm foo+
   \lstinline+rm foo bar+
   \lstinline+rm -rf foo+
+\end{Answer}
+
+\begin{Exercise}[label={0023}, difficulty={0}, origin={bash}]
+  No bash, cada aspa é interpretada de uma maneira diferente. Diga como o bash
+  interpretada as expressões:
+
+  \Question \lstinline+'$SHELL'+
+  \Question \lstinline+"$SHELL"+
+\end{Exercise}
+\begin{Answer}[ref={0023}]
+  \Question As aspas simples preservam o valor da expressão, logo teremos como
+  resultado \lstinline+$SHELL+.
+  \Question As aspas duplas não preserva o valor da expressão, logo teremos como
+  resultado \lstinline+/bin/bash+
+\end{Answer}
+
+\begin{Exercise}[label={0024}, difficulty={0}, origin={bash}]
+  No bash, chamamos de ``pipeline'' uma sequencia de comandos separados por um
+  ou mais operadores \lstinline+|+. Nessa sequencia, a saída de cada comando
+  serve de entrada para o comando seguinte.
+
+  \Question Diga qual é a saída de \lstinline+'ls / | grep i'+.
+  \Question Diga qual é a saída de \lstinline+'cat /etc/passwd / | grep root'+.
+\end{Exercise}
+\begin{Answer}[ref={0023}]
+  \Question A saída será o nome de todos os arquivos e diretórios presentes na
+  raíz do sistema que possuem em seu nome a letra \lstinline+i+.
+  \Question A saída será as linhas do arquivo \lstinline+/etc/passwd+ que possue
+  a expressão \lstinline+root+.
+\end{Answer}
+
+\begin{Exercise}[label={0024}, difficulty={0}, origin={bash}]
+  O que devemos fazer para que o arquivo \lstinline+foo.sh+ possa ser executado
+  como um script do bash.
+\end{Exercise}
+\begin{Answer}[ref={0024}]
+  A primeira linha do arquivo \lstinline+foo.sh+ deve ser
+  \begin{lstlisting}
+#!/bin/bash
+  \end{lstlisting}
+  e o arquivo deve possuir permissão de execução, que é atribuido com
+  \begin{lstlisting}
+$ chmod u+x foo.sh
+  \end{lstlisting}
+\end{Answer}
+
+\begin{Exercise}[label={0025}, difficulty={0}, origin={bash}]
+  É possível redirecionar a entrada e saída no bash. Isso é feito utilizando
+  os operadores \lstinline+<+, \lstinline+>+ e variações destes.  Explique o que
+  cada um faz nos exemplos abaixos:
+
+  \Question \lstinline+foo < bar$
+  \Question \lstinline+foo > bar$
+  \Question \lstinline+foo >> bar$
+  \Question \lstinline+foo &> bar$
+  \Question \lstinline+foo &>> bar$
+\end{Exercise}
+\begin{Answer}[ref={0025}]
+  \Question O arquivo \lstinline+bar+ é utilizado como entrada para o
+  ``programa'' \lstinline+foo+.
+  \Question A saída padrão do ``programa'' \lstinline+foo+ é redirecionada para
+  o arquivo \lstinline+bar+ que é sobre-escrito.
+  \Question A saída padrão do ``programa'' \lstinline+foo+ é redirecionada para
+  o final do arquivo \lstinline+bar+.
+  \Question A saída padrão e de erro do ``programa'' \lstinline+foo+ é
+  redirecionada para o arquivo \lstinline+bar+ que é sobre-escrito.
+  \Question A saída padrão e de erro do ``programa'' \lstinline+foo+ é
+  redirecionada para o final do arquivo \lstinline+bar+.
+\end{Answer}
+
+\begin{Exercise}[label={0026}, difficulty={0}, origin={bash}]
+  O comando \lstinline+pwd+ informa o caminho absoluto do diretório corrente e
+  \lstinline+cd+ muda o diretório corrente.
+
+  Considerando que o nome do usuário é \lstinline+zeninguem+ e que o diretório
+  atual é \lstinline+/algum/diretorio/aleatorio+, diga qual é a saída dos
+  comandos abaixos executados de forma independente.
+
+  \Question \lstinline+pwd$
+  \Question \lstinline+cd foo; pwd$
+  \Question \lstinline+cd foo/bar; pwd$
+  \Question \lstinline+cd; pwd$
+  \Question \lstinline+cd ~; pwd$
+  \Question \lstinline+cd ..; pwd$
+\end{Exercise}
+\begin{Answer}[ref={0026}]
+  \Question \lstinline+/algum/diretorio/aleatorio+
+  \Question \lstinline+/algum/diretorio/aleatorio/foo+
+  \Question \lstinline+/algum/diretorio/aleatorio/foo/bar+
+  \Question \lstinline+/home/zeninguem+
+  \Question \lstinline+/home/zeninguem+
+  \Question \lstinline+/algum/diretorio+
+\end{Answer}
+
+\begin{Exercise}[label={0027}, difficulty={0}, origin={bash}]
+  O comando \lstinline+echo+ imprime na saída padrão os argumentos e depois uma
+  quebra de linha.
+
+  Diga qual é a saída dos comandos abaixos executados de forma independente.
+
+  \Question \lstinline+echo 'Ola mundo'+
+  \Question \lstinline+echo 'E lembrem-se:\nO poder é de vocês!'+
+  \Question \lstinline+echo -e 'E lembrem-se:\nO poder é de vocês!'+
+\end{Exercise}
+\begin{Answer}[ref={0027}]
+  \Question \lstinline+Ola mundo+
+  \Question \lstinline+E lembrem-se:\nO poder é de vocês!+
+  \Question \lstinline+E lembrem-se:+ \\
+  \lstinline+O poder é de vocês!+
 \end{Answer}
