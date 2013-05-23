@@ -155,6 +155,12 @@ function read_subject() {
   newline
   printatscreen "Indique o ID do assunto: "
   read subject
+  while [ -z "$subject" ]; do
+    errorprint "Não deixe em branco!\n"
+    printatscreen "Indique o ID do assunto: "
+    read subject
+  done
+    
   if ls $subject*-db.tex &> /dev/null
   then
     subdb=$(ls ${subject}*-db.tex)
