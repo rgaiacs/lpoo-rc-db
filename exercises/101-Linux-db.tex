@@ -171,6 +171,36 @@ $ git commit -m "Adicionado arquivo hello.c"
   \end{lstlisting}
 \end{Answer}
 
+\begin{Exercise}[label={0011}, difficulty={0}, origin={git}]
+  Diga qual o comando que pode ter gerado a saída abaixo:
+  \begin{lstlisting}
+commit d4451fa874eff5234d5a8e0e5167d32333d29bf2
+Author: Raniere Silva <ra092767@ime.unicamp.br>
+Date:   Fri May 24 18:12:00 2013 -0300
+
+    Adicionando arquivo hello.c
+
+diff --git a/hello.c b/hello.c
+new file mode 100644
+index 0000000..c28c8da
+--- /dev/null
++++ b/hello.c
+@@ -0,0 +1,7 @@
++#include <stdio.h>
++
++int main() {
++  printf("Ola mundo\n");
++
++  return 0;
++}
+  \end{lstlisting}
+\end{Exercise}
+\begin{Answer}[ref={0011}]
+  \begin{lstlisting}
+$ git show d4451f 
+  \end{lstlisting}
+\end{Answer}
+
 \begin{Exercise}[label={0012}, difficulty={0}, origin={git}]
   Considere a situação descrita abaixo:
   \begin{lstlisting}
@@ -195,13 +225,22 @@ $ git diff -- hello.c
 \begin{Exercise}[label={0013}, difficulty={0}, origin={git}]
   Diga qual o comando que pode ter gerado a saída abaixo:
   \begin{lstlisting}
-* 2228f1f Troca de "mundo" por "marte"
-* 81be5db Adicionado arquivo hello.c
+commit d548c953d44631bcd022ae402e7b485cba1650b6
+Author: Raniere Silva <ra092767@ime.unicamp.br>
+Date:   Fri May 24 18:12:43 2013 -0300
+
+    Troca de "mundo" por "marte"
+
+commit d4451fa874eff5234d5a8e0e5167d32333d29bf2
+Author: Raniere Silva <ra092767@ime.unicamp.br>
+Date:   Fri May 24 18:12:00 2013 -0300
+
+    Adicionando arquivo hello.c
   \end{lstlisting}
 \end{Exercise}
 \begin{Answer}[ref={0013}]
   \begin{lstlisting}
-$ git log --graph --oneline
+$ git log
   \end{lstlisting}
 \end{Answer}
 
@@ -374,11 +413,11 @@ $ chmod u+x foo.sh
   os operadores \lstinline+<+, \lstinline+>+ e variações destes.  Explique o que
   cada um faz nos exemplos abaixos:
 
-  \Question \lstinline+foo < bar$
-  \Question \lstinline+foo > bar$
-  \Question \lstinline+foo >> bar$
-  \Question \lstinline+foo &> bar$
-  \Question \lstinline+foo &>> bar$
+  \Question \lstinline+foo < bar$+
+  \Question \lstinline+foo > bar$+
+  \Question \lstinline+foo >> bar$+
+  \Question \lstinline+foo &> bar$+
+  \Question \lstinline+foo &>> bar$+
 \end{Exercise}
 \begin{Answer}[ref={0025}]
   \Question O arquivo \lstinline+bar+ é utilizado como entrada para o
@@ -401,12 +440,12 @@ $ chmod u+x foo.sh
   atual é \lstinline+/algum/diretorio/aleatorio+, diga qual é a saída dos
   comandos abaixos executados de forma independente.
 
-  \Question \lstinline+pwd$
-  \Question \lstinline+cd foo; pwd$
-  \Question \lstinline+cd foo/bar; pwd$
-  \Question \lstinline+cd; pwd$
-  \Question \lstinline+cd ~; pwd$
-  \Question \lstinline+cd ..; pwd$
+  \Question \lstinline+pwd$+
+  \Question \lstinline+cd foo; pwd$+
+  \Question \lstinline+cd foo/bar; pwd$+
+  \Question \lstinline+cd; pwd$+
+  \Question \lstinline+cd ~; pwd$+
+  \Question \lstinline+cd ..; pwd$+
 \end{Exercise}
 \begin{Answer}[ref={0026}]
   \Question \lstinline+/algum/diretorio/aleatorio+
@@ -424,12 +463,95 @@ $ chmod u+x foo.sh
   Diga qual é a saída dos comandos abaixos executados de forma independente.
 
   \Question \lstinline+echo 'Ola mundo'+
-  \Question \lstinline+echo 'E lembrem-se:\nO poder é de vocês!'+
-  \Question \lstinline+echo -e 'E lembrem-se:\nO poder é de vocês!'+
+  \Question \lstinline+echo 'E lembrem-se:\nO poder eh de voces!'+
+  \Question \lstinline+echo -e 'E lembrem-se:\nO poder eh de voces!'+
 \end{Exercise}
 \begin{Answer}[ref={0027}]
   \Question \lstinline+Ola mundo+
-  \Question \lstinline+E lembrem-se:\nO poder é de vocês!+
+  \Question \lstinline+E lembrem-se:\nO poder eh de voces!+
   \Question \lstinline+E lembrem-se:+ \\
-  \lstinline+O poder é de vocês!+
+  \lstinline+O poder eh de voces!+
+\end{Answer}
+
+\begin{Exercise}[label={0029}, difficulty={1}, origin={git}]
+  Diga qual o comando que lista apenas os commits em que o arquivo
+  \lstinline+hello.c+ foi modificado?
+\end{Exercise}
+\begin{Answer}[ref={0029}]
+  \begin{lstlisting}
+$ git log -- hello.c
+  \end{lstlisting}
+\end{Answer}
+
+\begin{Exercise}[label={0030}, difficulty={1}, origin={git}]
+  Diga qual o comando que pode ter gerado a saída abaixo:
+  \begin{lstlisting}
+* ceedc90 (HEAD, master) Adicionado biblioteca aritmetica
+* 53f37a8 Adicionado produto.c
+* d6314b3 Adicionado soma.c
+* d548c95 Troca de "mundo" por "marte"
+* d4451fa Adicionando arquivo hello.c
+  \end{lstlisting}
+\end{Exercise}
+\begin{Answer}[ref={0030}]
+  \begin{lstlisting}
+$ git log --oneline --graph --decorate --all
+  \end{lstlisting}
+\end{Answer}
+
+\begin{Exercise}[label={0031}, difficulty={1}, origin={git}]
+  Diga qual o comando que mostra apenas as modificações do último commit no
+  arquivo \lstinline+hello.c+?
+\end{Exercise}
+\begin{Answer}[ref={0031}]
+  \begin{lstlisting}
+  $ git show -- hello.c
+  \end{lstlisting}
+\end{Answer}
+
+\begin{Exercise}[label={0032}, difficulty={1}, origin={git}]
+  Considerando os commits indicados abaixo:
+  \begin{lstlisting}
+* ceedc90 (HEAD, master) Adicionado biblioteca aritmetica
+* 53f37a8 Adicionado produto.c
+* d6314b3 Adicionado soma.c
+* d548c95 Troca de "mundo" por "marte"
+* d4451fa Adicionando arquivo hello.c
+  \end{lstlisting}
+  \Question Qual o comando para mostrar as informações do commit
+  \lstinline+53f37a8+?
+  \Question Qual o comando para mostrar as informações dos commit
+  \lstinline+53f37a8+, \lstinline+d6314b3+ e \lstinline+d548c95+?
+\end{Exercise}
+\begin{Answer}[ref={0032}]
+  \Question \lstinline+git show 53f37a8+
+  \Question \lstinline+git show 53f37a8...d4451fa+
+\end{Answer}
+
+\begin{Exercise}[label={0033}, difficulty={1}, origin={git}]
+  Diga qual o comando que lista apenas os commits em que o arquivo
+  \lstinline+hello.c+ foi modificado?
+\end{Exercise}
+\begin{Answer}[ref={0033}]
+  \begin{lstlisting}
+$ git log -- hello.c
+  \end{lstlisting}
+\end{Answer}
+
+\begin{Exercise}[label={0032}, difficulty={1}, origin={git}]
+  Considerando os commits indicados abaixo:
+  \begin{lstlisting}
+* ceedc90 (HEAD, master) Adicionado biblioteca aritmetica
+* 53f37a8 Adicionado produto.c
+* d6314b3 Adicionado soma.c
+* d548c95 Troca de "mundo" por "marte"
+* d4451fa Adicionando arquivo hello.c
+  \end{lstlisting}
+  Qual o comando para mostrar as diferenças entre os commit
+  \lstinline+53f37a8+ e \lstinline+d6314b3+?
+\end{Exercise}
+\begin{Answer}[ref={0032}]
+  \begin{lstlisting}
+$ git log 53f37a8 d6314b3
+  \end{lstlisting}
 \end{Answer}
